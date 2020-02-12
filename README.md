@@ -5,7 +5,6 @@
 ## Build Setup
 
 ``` bash
-#balabala
 # install dependencies
 npm install
 
