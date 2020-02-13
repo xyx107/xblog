@@ -8,11 +8,11 @@ import Routes from './routes'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/css/global.css'
-import './assets/font_2t8t9n829gi/iconfont.css'
+import './assets/iconfont/iconfont.css'
 
 import axios from 'axios'
 //配置请求的根路径
-axios.defauls.baseURL = ''
+// axios.defauls.baseUrl = ''
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false

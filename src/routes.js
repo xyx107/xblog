@@ -3,7 +3,7 @@ import Article from './components/Article.vue'
 import SingleBlog from './components/SingleBlog'
 import Login from './components/Login'
 import Forgetpw from './components/Forgetpw'
-
+import Register from './components/Register'
 
 export default [
     // {
@@ -17,6 +17,10 @@ export default [
     {
         path: "/login", 
         component: Login
+     },
+     {
+        path: "/register", 
+        component: Register
      },
      {
         path: "/forgetpw", 

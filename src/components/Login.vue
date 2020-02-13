@@ -2,29 +2,35 @@
   <div id="login-main">
       <el-form ref="loginFormRef" id="login-form" :model="loginForm" :rules="formRules">
         <el-form-item prop="username"> 
-            <el-input prefix-icon="iconfont icon-yonghu" placeholder="请输入用户名/邮箱" v-model="form.username"> </el-input >
+            <el-input prefix-icon="iconfont icon-yonghu" placeholder="请输入用户名/邮箱" v-model="loginForm.username"> </el-input >
         </el-form-item>
-        <el-form-item  prop="password">
-            <el-input prefix-icon="iconfont icon-mima" show-password placeholder="请输入密码" v-model="form.password"></el-input>
+        <el-form-item prop="password">
+            <el-input prefix-icon="iconfont icon-mima" show-password placeholder="请输入密码" v-model="loginForm.password"></el-input>
         </el-form-item>
         <el-form-item >  
-        <el-input  prefix-icon="iconfont icon-mima"  placeholder="请输入验证码"></el-input>
-        </el-form-item>
-        <el-form-item class="btns">
-          <el-button type="primary" @click="login" >登录</el-button>
-          <el-button type="primary" plain >注册</el-button>
-        </el-form-item>
+            <el-input prefix-icon="iconfont icon-mima"  placeholder="请输入验证码" v-model="loginForm.verification"></el-input>
+        </el-form-item> 
         <el-form-item >
             <router-link to="/forgetpw" > 
               <el-link type="info">忘记密码</el-link>
             </router-link>
             <el-button type="info" plain @click="resetLoginForm">重置</el-button>
         </el-form-item>
+        <el-form-item class="btns">
+          <el-button type="primary" @click="login" >登录</el-button>
+          <el-button type="primary" plain >
+            <router-link to="/register" > 
+              注册
+            </router-link>
+          </el-button>
+        </el-form-item>
       </el-form>
   </div>
 </template>
 
 <script>
+import service from '@/utils/request.js'
+import { xxx } from '@/api/login.js'
 export default {
   name: '',
   components: {},
@@ -32,7 +38,8 @@ export default {
     return {
       loginForm:{
         username: '',
-        password: ''
+        password: '',
+        verification: ''
       },
       formRules:{
         username: [
@@ -52,7 +59,7 @@ export default {
     },
     login() {
       this.$refs.loginFormRef.validate(async (valid) => {
-        // console.log(validate)
+        console.log(validate)
         if(!valid) return //验证失败则返回
         const {data: res} = await this.$http.post("login//登录验证地址",this.loginForm)
         if(res.meta.status !=200) return console.log("登陆失败")
@@ -63,12 +70,9 @@ export default {
 }
 </script>
 
-<style>
+<style >
 #login-main{
-  
-  
   background-color: #eee;
-  
 }
 .login-logo{
   width: 27%;
