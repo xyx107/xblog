@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <Article/> -->
     <!-- <ShowBlogs/> -->
-    <BlogHeader/>
+    <!-- <BlogHeader/> -->
     <router-view></router-view>
   </div>
 </template>
