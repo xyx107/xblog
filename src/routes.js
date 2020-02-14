@@ -1,9 +1,10 @@
 import ShowBlogs from './components/ShowBlogs.vue'
 import Article from './components/Article.vue'
 import SingleBlog from './components/SingleBlog'
-import Login from './components/Login'
+// import Login from './components/Login'
 import Forgetpw from './components/Forgetpw'
-import Register from './components/Register'
+// import Register from './components/Register'
+import LogIndex from './components/LogIndex'
 
 export default [
     // {
@@ -16,11 +17,11 @@ export default [
     },
     {
         path: "/login", 
-        component: Login
+        component: LogIndex
      },
      {
         path: "/register", 
-        component: Register
+        component: LogIndex
      },
      {
         path: "/forgetpw", 

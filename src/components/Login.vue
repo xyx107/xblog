@@ -1,8 +1,16 @@
 <template>
   <div id="login-main">
       <el-form ref="loginFormRef" id="login-form" :model="loginForm" :rules="formRules">
+        <!-- <el-form-item class="btns">
+          <el-button type="primary" @click="login" >登录</el-button>
+          <el-button type="primary" plain >
+            <router-link to="/register" > 
+              注册
+            </router-link>
+          </el-button>
+        </el-form-item> -->
         <el-form-item prop="username"> 
-            <el-input prefix-icon="iconfont icon-yonghu" placeholder="请输入用户名/邮箱" v-model="loginForm.username"> </el-input >
+            <el-input prefix-icon="iconfont icon-yonghu" placeholder="请输入用户名,邮箱格式" v-model="loginForm.username"> </el-input >
         </el-form-item>
         <el-form-item prop="password">
             <el-input prefix-icon="iconfont icon-mima" show-password placeholder="请输入密码" v-model="loginForm.password"></el-input>
@@ -32,7 +40,7 @@
 import service from '@/utils/request.js'
 import { xxx } from '@/api/login.js'
 export default {
-  name: '',
+  name: 'Login',
   components: {},
   data() {
     return {

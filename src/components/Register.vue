@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'Register',
   components: {},
   data() {
     return {
