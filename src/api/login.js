@@ -1,13 +1,23 @@
 import service from '@/utils/request'
-// 获取验证码
-export function Login() {
+// 登录
+export function Login(data) {
     service.request({
         method: "post",
-        url: '/user/12345',
-        data: {
-            firstName: 'Adf',
-            lastName: 'Sfdv'
-        }
+        url: '/login',
+        // headers: {
+        //     'Accept': 'application/json',
+        //     'Content-Type': 'application/json'
+        //   },
+        data
+})
+}
+// 注册
+export function Register() {
+    service.request({
+        method: "post",
+        url: '/register',
+        
+        data: {}
     })
 }
 // 获取用户名
@@ -19,6 +29,6 @@ export function Login() {
 //         lastName: 'Sfdv'
 //     }
 // })
-// 登录
 
-// 注册
+
+// 获取验证码
