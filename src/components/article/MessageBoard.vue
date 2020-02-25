@@ -1,6 +1,6 @@
 <template>
   <div id="messageBord">
-      <blog-header/>
+      <!-- <blog-header/> -->
       <main>
         <h1>留言</h1>
         <section id="classifyTotal">
@@ -26,7 +26,7 @@
             </el-form>
         </section>
       </main>
-      <blog-footer/>
+      <!-- <blog-footer/> -->
   </div>
 </template>
 

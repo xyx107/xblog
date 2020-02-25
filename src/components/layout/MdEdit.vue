@@ -40,7 +40,7 @@
 <script>
 import marked from 'marked'
 export default {
-  name: 'Article',
+  name: 'MdEdit',
   components: {},
   data() {
     return {
@@ -52,7 +52,7 @@ export default {
   },
   methods:{
       post: function() {
-          this.$http.post("https://",{
+          this.$http.post("https://jsonplaceholder.typicode.com",{
           title: this.blog.title,
           body: this.blog.content,
           userId: 1

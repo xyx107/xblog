@@ -1,7 +1,7 @@
 <template>
   <div id="show-blogs" >
     <blog-header/>
-    <article>
+    <article v-if="this.$route.path == '/article'">
     <div v-for="blog in blogs" :key="blog.index" id="single-blog">
       <router-link :to="'/blog/' + blog.id">
         <h3 class="title">{{blog.title}}</h3>
@@ -18,6 +18,7 @@
       <li>&#187</li>
     </ol>
     </article>
+    <router-view></router-view>
     <blog-footer/>
   </div>
 </template>
@@ -53,7 +54,7 @@ li{
   list-style: none;
 }
 #show-blogs{
-  width: 61.8%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   /* align-items: center; */

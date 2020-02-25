@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sliding mode</title>
+    <style>
+        body {
+            margin: 50px 0;
+            text-align: center;
+            font-family: "PingFangSC-Regular", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+        }
+
+        .inp {
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            padding: 0 10px;
+            width: 278px;
+            height: 40px;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #666;
+            cursor: pointer;
+            background: white linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+        }
+
+        .btn:hover {
+            background: white linear-gradient(0deg, #ffffff 0%, #f3f3f3 100%)
+        }
+
+        #captcha {
+            width: 300px;
+            display: inline-block;
+        }
+
+        label {
+            vertical-align: top;
+            display: inline-block;
+            width: 180px;
+            text-align: right;
+        }
+
+        #text {
+            height: 42px;
+            width: 298px;
+            text-align: center;
+            border-radius: 2px;
+            background-color: #F3F3F3;
+            color: #BBBBBB;
+            font-size: 14px;
+            letter-spacing: 0.1px;
+            line-height: 42px;
+        }
+
+        #wait {
+            display: none;
+            height: 42px;
+            width: 298px;
+            text-align: center;
+            border-radius: 2px;
+            background-color: #F3F3F3;
+        }
+
+        .loading {
+            margin: auto;
+            width: 70px;
+            height: 20px;
+        }
+
+        .loading-dot {
+            float: left;
+            width: 8px;
+            height: 8px;
+            margin: 18px 4px;
+            background: #ccc;
+
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+
+            opacity: 0;
+
+            -webkit-box-shadow: 0 0 2px black;
+            -moz-box-shadow: 0 0 2px black;
+            -ms-box-shadow: 0 0 2px black;
+            -o-box-shadow: 0 0 2px black;
+            box-shadow: 0 0 2px black;
+
+            -webkit-animation: loadingFade 1s infinite;
+            -moz-animation: loadingFade 1s infinite;
+            animation: loadingFade 1s infinite;
+        }
+
+        .loading-dot:nth-child(1) {
+            -webkit-animation-delay: 0s;
+            -moz-animation-delay: 0s;
+            animation-delay: 0s;
+        }
+
+        .loading-dot:nth-child(2) {
+            -webkit-animation-delay: 0.1s;
+            -moz-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+        }
+
+        .loading-dot:nth-child(3) {
+            -webkit-animation-delay: 0.2s;
+            -moz-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+        }
+
+        .loading-dot:nth-child(4) {
+            -webkit-animation-delay: 0.3s;
+            -moz-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+        }
+
+        @-webkit-keyframes loadingFade {
+            0% { opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0; }
+        }
+
+        @-moz-keyframes loadingFade {
+            0% { opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes loadingFade {
+            0% { opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+<h1>Sliding mode</h1>
+<form id="form">
+    <div>
+        <label for="username">username：</label>
+        <input class="inp" id="username" type="text" value="username">
+    </div>
+    <br>
+    <div>
+        <label for="password">password：</label>
+        <input class="inp" id="password" type="password" value="123456">
+    </div>
+    <br>
+    <div>
+        <label>Complete verification：</label>
+        <div id="captcha">
+            <div id="text">
+                行为验证™ 安全组件加载中
+            </div>
+            <div id="wait" class="show">
+                <div class="loading">
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div id="btn" class="btn">Submit</div>
+</form>
+
+
+
+
+<!-- 注意，验证码本身是不需要 jquery 库，此处使用 jquery 仅为了在 demo 中使用，减少代码量 -->
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+
+<script>
+
+
+    var handler = function (captchaObj) {
+        captchaObj.appendTo('#captcha');
+        captchaObj.onReady(function () {
+            $("#wait").hide();
+        });
+        $('#btn').click(function () {
+            var result = captchaObj.getValidate();
+            if (!result) {
+                return alert('Please complete verification');
+            }
+            $.ajax({
+                url: 'http://39.106.169.248:8080/login',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    username: $('#username2').val(),
+                    password: $('#password2').val(),
+                    geetest_challenge: result.geetest_challenge,
+                    geetest_validate: result.geetest_validate,
+                    geetest_seccode: result.geetest_seccode
+                },
+                success: function (data) {
+                    if (data.status === 'success') {
+                        alert('success');
+                    } else if (data.status === 'fail') {
+                        alert('fail, Please complete verification');
+                        captchaObj.reset();
+                    }
+                }
+            });
+        })
+        // 更多接口说明请参见：http://docs.geetest.com/install/client/web-front/
+    };
+
+
+    $.ajax({
+        url: "http://39.106.169.248:8080/gee", // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+
+            $('#text').hide();
+            $('#wait').show();
+            // 调用 initGeetest 进行初始化
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
+            initGeetest({
+                // 以下 4 个配置参数为必须，不能缺少
+                gt: data.data.gt,
+                challenge: data.challenge,
+                offline: !data.success, // 表示用户后台检测极验服务器是否宕机
+                new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
+
+                product: "popup", // 产品形式，包括：float，popup
+                lang: 'zh-cn',
+                width: "300px",
+                 https: true
+
+                // 更多配置参数说明请参见：http://docs.geetest.com/install/client/web-front/
+            }, handler);
+        }
+    });
+</script>
+</body>
+</html>

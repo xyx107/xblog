@@ -8,7 +8,6 @@ export function getToken(){
 }
 
 export function setToken(token){
-    console.log(111)
     return cookie.set(adminToken, token);
 }
 
@@ -17,7 +16,7 @@ export function removeToken(){
 }
 
 export function setUserName(value){
-    return window.localStorage.set(usernameKey, value);
+    return cookie.set(usernameKey, value);
 }
 
 export function getUserName(){

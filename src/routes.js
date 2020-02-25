@@ -1,15 +1,21 @@
-import ShowBlogs from './components/article/ShowBlogs.vue'
-import Article from './components/article/Article.vue'
-import SingleBlog from './components/article/SingleBlog'
 import Login from './components/login/Login'
 import Forgetpw from './components/login/Forgetpw'
 import Register from './components/login/Register'
-import Markdown from './components/article/Markdown'
+
+import Outline from './components/layout/Outline'
+import MdEdit from './components/layout/MdEdit'
+import Category from './components/layout/Category.vue'
+import Comment from './components/layout/Comment.vue'
+import User from './components/layout/User.vue'
+import ManageArtilce from './components/layout/ManageArtilce'
+
 import File from './components/article/File'
+import ShowBlogs from './components/article/ShowBlogs'
+import SingleBlog from './components/article/SingleBlog'
 import MessageBoard from './components/article/MessageBoard'
 import About from './components/article/About'
 import Friend from './components/article/Friend'
-
+import BlogList from './components/article/BlogList'
 // import VueRouter from 'vue-router'
 // Vue.use(VueRouter)
 //  const router = new VueRouter({
@@ -35,38 +41,57 @@ import Friend from './components/article/Friend'
         {
             path: "/article",
             name: "article",
-            component: ShowBlogs
+            component: ShowBlogs,
+            children: [
+                // { path: "/bloglist", name: "bloglist", component: BlogList },
+                { path: "/file", name: "file", component: File },
+                { path: "/messageboard", name: "messageboard", component: MessageBoard },
+                { path: "/about", name: "about", component: About },
+                { path: "/friend", name: "friend", component: Friend },
+            ]
         },
         {
-            path: "/file",
-            name: "file",
-            component: File
+            path: "/outline",
+            name: "outline",
+            component: Outline,
+            children: [
+                { path: "/category", name: "category", component: Category },
+                // { path: "/mdedit", name: "mdedit", component: MdEdit },
+                { path: "/comment", name: "comment", component: Comment },
+                { path: "/user", name: "user", component: User },
+                { path: "/manageartilce", name: "manageartilce", component: ManageArtilce },
+            ]
         },
+        // {
+        //     path: "/file",
+        //     name: "file",
+        //     component: File
+        // },
+        // {
+        //     path: "/messageboard",
+        //     name: "messageboard",
+        //     component: MessageBoard
+        // },
+        // {
+        //     path: "/about",
+        //     name: "about",
+        //     component: About
+        // },
+        // {
+        //     path: "/friend",
+        //     name: "friend",
+        //     component: Friend
+        // },
         {
-            path: "/messageboard",
-            name: "messageboard",
-            component: MessageBoard
+            path: "/mdedit",
+            name: "mdedit",
+            component: MdEdit
         },
-        {
-            path: "/about",
-            name: "about",
-            component: About
-        },
-        {
-            path: "/friend",
-            name: "friend",
-            component: Friend
-        },
-        {
-            path: "/markdown",
-            name: "markdown",
-            component: Markdown
-        },
-        {
-            path: "/edit",
-            name: "edit",
-            component: Article
-        },
+        // {
+        //     path: "/edit",
+        //     name: "edit",
+        //     component: Article
+        // },
         {
             path: '/article/:id',
             component: SingleBlog

@@ -5,12 +5,12 @@
       <p class="description">我于今早重生，来时心怀暖阳。</p>
       <nav id="navbar">
         <article>
-          <ul class="list">
+          <ul class="list" :router="true">
             <section><router-link to="article">首页</router-link></section>
             <section><router-link to="messageboard">留言</router-link></section>
             <section><router-link to="file">归档</router-link></section>
             <section><router-link to="about">关于</router-link></section>
-            <section><router-link to="">友链</router-link></section>
+            <section><router-link to="friend">友链</router-link></section>
           </ul>
         </article>
         <div class="icon">
@@ -18,6 +18,7 @@
         </div>
       </nav>
     </header>
+    
   </div>
   
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div id="blogFile">
-      <blog-header/>
+      <!-- <blog-header/> -->
       <main>
         <h1>归档</h1>
         <section id="classifyTotal">
@@ -20,7 +20,7 @@
           </ul>
         </section>
       </main>
-      <blog-footer/>
+      <!-- <blog-footer/> -->
   </div>
 </template>
 

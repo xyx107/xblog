@@ -48,10 +48,18 @@
       <el-form  :model="loginForm" ref="loginFormRef" :rules="logRules" size="medium">
         <el-form-item status-icon prop="username">
           <el-input
-            type="emali"
+            type="text"
             prefix-icon="iconfont icon-yonghu"
             placeholder="请输入用户名"
             v-model="loginForm.username"
+          ></el-input>
+        </el-form-item>
+        <el-form-item status-icon prop="email">
+          <el-input
+            
+            prefix-icon="iconfont icon-youjian"
+            placeholder="请输入邮箱"
+            v-model="loginForm.email"
           ></el-input>
         </el-form-item>
         <el-form-item prop="password">
@@ -80,14 +88,14 @@
         <el-form-item label-width="60px"></el-form-item>
 
         <el-form-item class="foot">
-          <el-button class="subbtn" type="primary" @click="login">登录</el-button>
+          <el-button class="subbtn" type="primary" @click="submitForm('loginFormRef')" >登录</el-button> 
             <router-link to="/forgetpw">
               <el-link type="info">忘记密码</el-link>
             </router-link>
         </el-form-item>
       </el-form>
       </div>
-      <!-- <Login v-show="isregister"></Login>
+      <!-- @click="login()" <Login v-show="isregister"></Login>
       <Register v-></Register>-->
     </div>
   </div>
@@ -96,6 +104,9 @@
 <script>
 import service from '@/utils/request.js'
 import { Login } from '@/api/login.js'
+
+// import { Message } from 'element-ui';
+
 export default {
   name: 'Login',
   components: {},
@@ -104,6 +115,7 @@ export default {
       loginForm:{
         username: 'aaaaa',
         password: 'aaaaa',
+        email: '1297184665@qq.com',
         code: ''
       },
       logRules:{
@@ -113,6 +125,9 @@ export default {
         password:[
           {required: true, message: "请输入密码", trigger: "blur" },
           { min: 5, message: '长度大于5个字符', trigger: 'blur' }
+        ],
+        emali: [
+          {required: true, message: "请输入邮箱", trigger: "blur" },
         ]
       }
     }
@@ -133,24 +148,48 @@ export default {
     //     if(res.meta.status !=200) return console.log("登陆失败")
     //     console.log("登陆成功")
     //  })
-     login() {
-        // let requestData = {
-        //   username: loginForm.username,
-        //   password: sha1(loginForm.password),
-        //   code: loginForm.code
-        // }
-        this.$refs.loginFormRef.validate(valid => {
-        if (!valid) return 
-        
-        this.$store.dispatch('user/login', this.loginForm)
-          .then(response => { 
-          // this.$router.push({
-          // name: 'article'
-          // })
+    login () {
+        let Data = {
+          username: 'aaaaa',
+          email: '1297184665@qq.com',
+          password: 'aaaaa',
+          code: ''}
+        this.$store.dispatch('user/login', Data)
+        .then(response => {
+          this.$router.push({
+            name: 'Console'
+          })
         }).catch(error => {});
-      })
-    }
+      },
+    submitForm (loginFormRef)  {
+        this.$refs.loginFormRef.validate((valid) => {
+          if (valid) {
+           this.$options.methods.login()
+          } else {
+            return false;}
+        })
+            }
+      
+    // login() {
+    //   this.$refs.loginFormRef.validate( valid => {
+    //     if (valid){
+    //       //因为vuex里的login返回了一个promise，所以可以直接用.then
+    //       this.$store.dispatch('user/login', this.loginForm)
+    //       .then( () => { 
+    //        setToken('aaa') 
+    //       // console.log(store.state.user.token)
+    //       this.$router.push({
+    //       name: 'article'
+    //       })
+    //     }).catch(error => {});  
+    //   } else {
+    //       return false;
+    //     }
+    //     //  await 
+    //   })
+    // }
   }
+   
 }
 </script>
 
