@@ -6,17 +6,19 @@ padding: 0;
 }
 body{
     /* background: url(https://s2.ax1x.com/2019/04/08/A5Gx6e.jpg) no-repeat; */
-    background-attachment: scroll;
+    /* background-attachment: scroll; */
     font-family: Lucida Sans Unicode,Verdana,"Hiragino Sans GB",-apple-system,Microsoft Yahei,sans-serif;
     /* filter:Alpha(opacity=80) ie*/
-
+    background-attachment: fixed;
 }
 a{
     text-decoration: none ;
 }
 body:before{
     background: url(https://s2.ax1x.com/2019/04/08/A5Gx6e.jpg) no-repeat;
+    background-attachment: fixed;
     background-size: cover;
+    background-attachment: scroll;
     width: 100%;
     height: 100%;
     content: "";
@@ -25,5 +27,5 @@ body:before{
     left: 0;
     z-index: -1;/*-1 可以当背景*/
     -webkit-filter: blur(3px);
-    filter: blur(3px);
+    filter: blur(7px);
 }

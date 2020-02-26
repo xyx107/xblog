@@ -5,12 +5,12 @@
         <ul>
           <li>
             <router-link to="/login">
-              <el-link type="info">登录</el-link>
+              <el-link type="primary">登录</el-link>
             </router-link>
           </li>
           <li>
             <router-link to="/register">
-              <el-link type="info">注册</el-link>
+              <el-link type="primary">注册</el-link>
             </router-link>
           </li>
         </ul>
@@ -24,17 +24,17 @@
             <el-input type="email" prefix-icon="iconfont icon-youjian" placeholder="请输入邮箱" v-model="registerForm.email"></el-input>
           </el-form-item>
           <el-form-item id="getCode" prop="code">
-            <el-row :gutter="12">
+            <el-row :gutter="19">
               <el-col :span="15">
                 <el-input prefix-icon="iconfont icon-mima" placeholder="请输入验证码" v-model="registerForm.code"></el-input>
               </el-col>
-              <el-col :span="7">
-                <el-button type="info" plain @click="getCode">获取验证码</el-button>
+              <el-col :span="9">
+                <el-button class="getcodebtn" type="info" plain @click="getCode()">获取验证码</el-button>
               </el-col>
             </el-row>
           </el-form-item>
           <el-form-item class="foot">
-            <el-button class="subbtn" type="primary" @click="register">注册</el-button>
+            <el-button class="subbtn" type="primary" @click="register()">注册</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { Register } from '@/api/login'
+import { Register, GetCode} from '@/api/login'
 import service from '@/utils/request.js'
 export default {
   name: "",
@@ -52,8 +52,9 @@ export default {
     return {
       registerForm: {
         username: "bbbbb",
-        email: "bbbbb@qq.com",
-        code: ""
+        email: "1297184665@qq.com",
+        password: "bbbbb",
+        code: ''
       },
       registerFormrRules: {
         username: [
@@ -67,7 +68,6 @@ export default {
   },
   methods: {
     register() {
-      
       this.$refs.registerRef.validate (valid => {
         if(!valid) return
         Register(this.registerForm)
@@ -82,12 +82,14 @@ export default {
         });
       })
     },
-    getCode() {}
+    getCode() {
+
+    }
   }
 };
 </script>
 
-<style>
+<style scoped>
 #main-body {
   display: flex;
   flex-direction: column;
@@ -97,20 +99,18 @@ export default {
 .menu {
   margin-top: 10%;
   height: 20px;
+  font-size: 20px;
 }
 .menu li {
   display: inline-block;
   width: 88px;
   line-height: 40px;
-  font-size: 14px;
-  color: #fff;
-  background-color: #fff;
   border-radius: 2px;
   cursor: pointer;
 }
 #main-form {
-  width: 350px;
-  background-color: rgba(20, 120, 120, 0.1);
+  width: 60%;
+  /* background-color: rgba(20, 120, 120, 0.1); */
   border-radius: 5%;
   padding: 45px 10px 25px 10px;
   margin-top: 0px;
@@ -124,7 +124,10 @@ export default {
   justify-content: center;
 }
 .subbtn {
-  width: 200px;
+  width: 350px;
   margin-top: 20px;
+}
+.getcodebtn{
+  
 }
 </style>

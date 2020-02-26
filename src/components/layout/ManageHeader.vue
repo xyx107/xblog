@@ -11,7 +11,7 @@
         </ul>
         <ul id="userNav">
             <li>欢迎admin</li>
-            <li> 登出</li>
+            <li> <a href="" @click="logout()">登出</a></li>
             <li><router-link to="/article">网站</router-link></li>
         </ul>
     </el-header>
@@ -26,36 +26,49 @@ export default {
     return {
 
     }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('user/logout')
+      .then(() => {
+        this.$router.push({
+          name: 'login'
+        })
+      })
+    }
   }
 }
 </script>
 
-<style >
-.el-header {
+<style scoped>
+/* .el-header {
     background-color: rgba(219, 108, 201, 0.1);
     color: #333;
     text-align: center;
     margin-right: 0;
-    /* line-height: 60px; */
-  }
-.el-header{
-    /* flex-grow: 0;
-    flex-shrink: 0; */
     display: flex;
     justify-content: space-between;
     width: 100%;
- }
+    line-height: 60px;
+  } */
 #manageNav {
   padding-left: 10px;
   display: flex;
 }
 #manageNav section{
     margin-right: 10px;
+    background-color: rgba(219, 108, 201, 0.1);
+}
+#nav{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #333;
 }
 li {
   list-style: none;
   display: inline;
   padding-right: 10px;
-  
 }
+
 </style>

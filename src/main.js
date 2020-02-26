@@ -2,9 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueResource from 'vue-resource'
-import VueRouter from 'vue-router'
+
+import router from './router'
 import App from './App'
-import Routes from './routes'
+
 import store from "./store/index.js";
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
@@ -21,14 +22,14 @@ Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.http.options.credentials = true
 
-Vue.use(VueRouter)
+
 Vue.use(ElementUI)
 
-//创建路由
-const router = new VueRouter({
-  mode: "history",
-  routes: Routes
-})
+// 创建路由
+// const router = new Router({
+//   mode: "history",
+//   routes: Routes
+// })
 
 /* eslint-disable no-new */
 new Vue({

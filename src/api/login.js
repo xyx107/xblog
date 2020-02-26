@@ -1,22 +1,17 @@
 import service from '@/utils/request'
 // 登录
 export function Login(data) {
-    service.request({
+  return service.request({
         method: "post",
         url: '/login',
-        // headers: {
-        //     'Accept': 'application/json',
-        //     'Content-Type': 'application/json'
-        //   },
         data
 })
 }
 // 注册
 export function Register() {
-    service.request({
+    return  service.request({
         method: "post",
         url: '/register',
-        
         data: {}
     })
 }
@@ -32,3 +27,10 @@ export function Register() {
 
 
 // 获取验证码
+export function GetCode() {
+    return  service.request({
+        method: "post",
+        url: '/code',
+        data
+    })
+}
