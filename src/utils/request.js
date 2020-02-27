@@ -5,7 +5,7 @@ import { getToken, getUserName } from "@/utils/user";
 
 const service = axios.create({
     baseURL: 'http://39.106.169.248:8080',
-    timeout: 5000,
+    timeout: 15000,//
 });
 axios.defaults.headers.post["Content-type"] = "application/json"
 
@@ -24,6 +24,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
     response => {
         const data = response.data
+        // console.log(data)
         if (data.code !== 0) {
             Message.error(data.message);
             return Promise.reject(data);

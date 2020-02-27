@@ -44,9 +44,6 @@ const actions = {  // 可以回调处理事情
       })
     })
   },
-  getCode() {
-
-  },
   logout({ commit}) {
     return new Promise((resolve, reject) => {
       commit('SET_TOKEN','')

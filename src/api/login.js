@@ -7,12 +7,22 @@ export function Login(data) {
         data
 })
 }
+
 // 注册
-export function Register() {
-    return  service.request({
+export function Register(data) {
+    return service.request({
         method: "post",
         url: '/register',
-        data: {}
+        data
+    })
+}
+
+// 获取验证码
+export function GetCode(data) {
+    return service.request({
+        method: "post",
+        url: '/code',
+        data
     })
 }
 // 获取用户名
@@ -26,11 +36,3 @@ export function Register() {
 // })
 
 
-// 获取验证码
-export function GetCode() {
-    return  service.request({
-        method: "post",
-        url: '/code',
-        data
-    })
-}
