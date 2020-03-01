@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Message } from "element-ui";
 import store from '@/store'
+import cookie from "cookie_js";
 import { getToken, getUserName } from "@/utils/user";
 
 const service = axios.create({
@@ -13,8 +14,11 @@ axios.defaults.headers.post["Content-type"] = "application/json"
 service.interceptors.request.use(
     config => {
         if (store.getters.token)
-            // config.headers.Authorization = `yxy ${store.state.token}`
-            config.headers['Authorization'] = getToken()
+            // config.headers.Authorization = `yxy ${cookie.get("token")}`
+            config.headers['Content-Type'] = text/plain
+            config.headers['Authorization'] = `yxy ${cookie.get("token")}`
+          
+            console.log(config)
         return config
     }, error => {
         return Promise.reject(error);
@@ -24,12 +28,11 @@ service.interceptors.request.use(
 service.interceptors.response.use(
     response => {
         const data = response.data
-        // console.log(data)
+        console.log(data)
         if (data.code !== 0) {
             Message.error(data.message);
             return Promise.reject(data);
         } else {
-            Message.success(data.message);
             return data;
         }//在被.then之前处理
     }, error => {

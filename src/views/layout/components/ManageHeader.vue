@@ -2,7 +2,7 @@
   <div >
     <el-header id="nav">
         <ul id='manageNav'>
-            <section><router-link to="outline">概要</router-link></section>
+            <section><router-link to="main">概要</router-link></section>
             <section><router-link to="manageartilce">文章</router-link></section>
             <section><router-link to="category">分类</router-link></section>
             <section><router-link to="comment">评论</router-link></section>

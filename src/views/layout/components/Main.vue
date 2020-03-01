@@ -1,8 +1,8 @@
 <template>
   <div id="outline" class="main">
     <el-container>
-      <manage-header />
-      <el-main  v-if="this.$route.path == '/outline'">
+      <!-- <manage-header /> -->
+      <el-main  v-if="this.$route.path == '/admin'">
           <template>
             <!-- Scroll down to see the bottom-right button. -->
             <el-backtop target=".main">
@@ -97,7 +97,7 @@
         </section>
       </el-main>
       <router-view></router-view>
-      <manage-footer />
+      <!-- <manage-footer /> -->
     </el-container>
   </div>
 </template>

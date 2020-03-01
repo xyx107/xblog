@@ -4,26 +4,29 @@ import service from '@/utils/request'
 export function Addblog(data) {
    return service.request({
         method: "post",
-        url: '/',
+        url: '/article',
         data
 })
 }
+
 // 点赞
-export function Deleteblog(data) {
+export function Dianzan(data) {
     return service.request({
         method: "get",
         url: '/article/{id}/zan',
         data
 })
 }
+
 // 列表,data是 linite和offset
 export function Bloglist(data) {
     return service.request({
-        method: "post",
+        method: "get",
         url: '/article',
         data
 })
 }
+
 // 编辑
 export function Editblog(data) {
     return service.request({
@@ -33,29 +36,29 @@ export function Editblog(data) {
 })
 }
 
-// // 文章详情
-// export function Singleblog(data) {
-//     return service.request({
-//         method: "get",
-//         url: '/article/{id}',
-//         data
-// })
-// }
-// // 搜索
-// export function Login(data) {
-//     return service.request({
-//         method: "post",
-//         url: '/login',
-//         data
-// })
-// }
+// 删除
+export function Deleteblog(delarr) {
+    return service.request({
+        method: "delete",
+        url: `article/${delarr}`
+})
+}
+// 文章详情
+export function Singleblog(id) {
+    return service.request({
+        method: "get",
+        url: `/article/${id}`
+})
+}
 
-// // 删除
-// export function Login(data) {
-//     return service.request({
-//         method: "post",
-//         url: '/login',
-//         data
-// })
-// }
+// 搜索
+export function Search(data) {
+    return service.request({
+        method: "post",
+        url: '/login',
+        data
+})
+}
+
+
 

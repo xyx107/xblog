@@ -4,24 +4,24 @@ import store from "@/store/index";
 import { getToken, removeToken, removeUserName } from "@/utils/user";
 Vue.use(Router)
 
-import Login from '@/components/login/Login'
-import Forgetpw from '@/components/login/Forgetpw'
-import Register from '@/components/login/Register'
+import Login from '@/views/login/Login'
+import Forgetpw from '@/views/login/Forgetpw'
+import Register from '@/views/login/Register'
 
-import User from '@/components/layout/User.vue'
-import MdEdit from '../components/layout/MdEdit'
-import Outline from '../components/layout/Outline'
-import Comment from '../components/layout/Comment'
-import AddBlog from '../components/layout/AddBlog'
-import Category from '../components/layout/Category'
-import ManageArtilce from '../components/layout/ManageArtilce'
+import User from '@/views/layout/User.vue'
+import MdEdit from '../views/layout/MdEdit'
+import Main from '../views/layout/components/Main'
+import Comment from '../views/layout/Comment'
+import AddBlog from '../views/layout/AddBlog'
+import Category from '../views/layout/Category'
+import ManageArtilce from '../views/layout/ManageArtilce'
 
-import File from '../components/article/File'
-import About from '../components/article/About'
-import Friend from '../components/article/Friend'
-import ShowBlogs from '../components/article/ShowBlogs'
-import SingleBlog from '../components/article/SingleBlog'
-import MessageBoard from '../components/article/MessageBoard'
+import File from '../views/article/File'
+import About from '../views/article/About'
+import Friend from '../views/article/Friend'
+import ShowBlogs from '../views/article/ShowBlogs'
+import SingleBlog from '../views/article/SingleBlog'
+import MessageBoard from '../views/article/MessageBoard'
 
 const router = new Router({
     mode: 'history',
@@ -49,7 +49,6 @@ const router = new Router({
             name: "article",
             component: ShowBlogs,
             children: [
-                // { path: "/bloglist", name: "bloglist", component: BlogList },
                 { path: "/file", name: "file", component: File },
                 { path: "/messageboard", name: "messageboard", component: MessageBoard },
                 { path: "/about", name: "about", component: About },
@@ -57,9 +56,13 @@ const router = new Router({
             ]
         },
         {
-            path: "/outline",
-            name: "outline",
-            component: Outline,
+            path: '/article/:id',
+            component: SingleBlog
+        },
+        {
+            path: "/admin",
+            name: "admin",
+            component: () => import('@/views/layout/index'),
             children: [
                 { path: "/user", name: "user", component: User },
                 { path: "/addblog", name: "addblog", component: AddBlog },
@@ -73,15 +76,12 @@ const router = new Router({
             name: "mdedit",
             component: MdEdit
         },
-        {
-            path: '/article/:id',
-            component: SingleBlog
-        }
+        
     ]
 
 })
 
-const whiteRouter = ['/login', '/register', '/forgetpw']//路由白名单
+const whiteRouter = ['/friend','/about','/login', '/register', '/forgetpw']//路由白名单
 
 router.beforeEach((to, from, next) => {
     if(getToken()) {

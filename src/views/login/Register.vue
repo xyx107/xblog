@@ -47,7 +47,7 @@
 
 <script>
 import { Register, GetCode} from '@/api/login'
-import { Message } from 'element-ui'
+import { Message } from 'element-ui';
 import { validateEmail } from '@/utils/validate.js'
 export default {
   name: "",
@@ -60,7 +60,7 @@ export default {
         password: "bbbbb",
         code: ''
       },
-      timer: '',
+      timer: null,
       codebtnStatus: {
         val: false,
         text: '获取验证码'
@@ -97,6 +97,10 @@ export default {
         })
       })
     },   
+    updataButtonStatus(params) {
+        codebtnStatus.val = params.val;
+        codebtnStatus.text = params.text;
+    },
     countDown(number) {
       if(this.timer) { //防止有没清除的定时器
         clearInterval(this.timer) 
@@ -104,24 +108,24 @@ export default {
       let time = number
       this.timer = setInterval(() => {
         time--
-        
+        console.log(typeof(this.timer))
         if(time === 0) {
-          this.codebtnStatus = {
+          this.$options.methods.updataButtonStatus({
             val: false,
-            text: '再次获取'
-          }
+            text: '再次获取'}
+          )
           clearInterval(this.timer) //清除定时器
-          console.log(time)
+          
         }else {
           this.codebtnStatus = {
             val: true ,
-            text: `倒计时${this.time}秒`
+            text: `倒计时${time}秒`
           }
         }
       }, 1000)
     },
     getcode()  {
-      var _this = this
+      
       // console.log(typeof(this.timer.value))
       this.codebtnStatus = {
         val: true,
@@ -139,13 +143,11 @@ export default {
           this.$message.error('邮箱格式有误，请重新输入！！');
           return false;
       }
+      // debugger
       GetCode(Email).then( response => {
-          
-          let data = response.data
-          this.$message.success('')
-          // loginButtonStatus.value = false;
-            // 调定时器，倒计时
-            this.$options.methods.countDown(5)
+          // let data = response.data
+          this.$options.methods.countDown(5)
+          console.log('this.codebtnStatus')
         }).catch( error => {
           console.log(error)
         })

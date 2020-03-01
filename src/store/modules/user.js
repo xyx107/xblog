@@ -34,9 +34,9 @@ const actions = {  // 可以回调处理事情
     return new Promise((resolve, reject) => {
       Login(loginForm).then(response => {
         const data = response
-        commit('SET_TOKEN', data.data.token);
+        commit('SET_TOKEN', data.data.token)
         // commit('SET_NAME', data.username);
-        setToken(data.data.token);
+        setToken(data.data.token)
         // setUserName(data.username);
         resolve(response)
       }).catch(error => {

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 
-import BlogHeader from '@/components/article/BlogHeader'
-import Footer from '@/components/article/Footer'
-import ManageHeader from '@/components/layout/ManageHeader'
-import ManageFooter from '@/components/layout/ManageFooter'
+import BlogHeader from '@/views/article/BlogHeader'
+import Footer from '@/views/article/Footer'
+import ManageHeader from '@/views/layout/components/ManageHeader'
+import ManageFooter from '@/views/layout/components/ManageFooter'
 
 Vue.component('blog-header', BlogHeader )
 Vue.component('blog-footer', Footer )

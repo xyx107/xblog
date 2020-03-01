@@ -85,8 +85,8 @@ export default {
   data() {
     return {
       loginForm:{
-        username: '',
-        password: '',
+        username: 'archerx',
+        password: 'archerx',
         code: ''
       },
       logRules:{
@@ -95,7 +95,7 @@ export default {
         ],
         password:[
           {required: true, message: "请输入密码", trigger: "blur" },
-          { min: 5, message: '长度大于5个字符', trigger: 'blur' }
+          { min: 7, message: '长度大于7个字符', trigger: 'blur' }
         ]
       }
     }
@@ -117,7 +117,7 @@ export default {
           this.$store.dispatch('user/login', this.loginForm)
           .then( () => {
           this.$router.push({
-            name: 'outline'
+            name: 'admin'
             })
           }).catch(error => {});  
         }else {

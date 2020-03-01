@@ -1,11 +1,15 @@
 <template>
   <div >
       <h1>{{blog.title}}</h1>
-      <article>{{blog.body}}</article>
+      <article>{{blog.content}}</article>
+      <ul v-for="tags in blog.tag" :key="tags.insex">
+        <li>{{tags}}</li>
+      </ul>
   </div>
 </template>
 
 <script>
+import { Singleblog } from '@/api/article.js'
 export default {
   name: 'SingleBlog',
   components: {},
@@ -16,9 +20,8 @@ export default {
     }
   },
   created() {
-      this.$http.get("https://jsonplaceholder.typicode.com/posts/" + this.id)
-      .then(function(data){
-          this.blog = data.body
+    Singleblog(this.id).then( data => {
+          this.blog = data.data
       })
   }
 }
