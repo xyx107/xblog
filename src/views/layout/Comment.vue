@@ -1,6 +1,5 @@
 <template>
   <div >
-      <h2>评论管理</h2>
       <main>
         <el-table id="table" show-overflow-tooltip="true" :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" ref="multipleTable">
           <el-table-column type="selection" width="80"></el-table-column>
@@ -36,10 +35,22 @@
           </el-table-column>
         </el-table>
       </main>
+      <!-- <div id="test1">
+      <div id="main"></div>
+      <div id="left"></div>
+      <div id="right"></div>
+    </div> -->
+    <!-- <div id="test2">
+      <div>
+        <div id="main"></div>
+      </div>
+      <div id="left"></div>
+      <div id="right"></div>
+    </div> -->
   </div>
 </template>
 
-<script>
+<script scoped>
 export default {
   name: '',
   components: {},
@@ -57,12 +68,55 @@ export default {
 </script>
 
 <style scoped>
+#test1{
+margin:0 200px 0 200px;
+}
+#test1 #main{
+widows: 100%;
+background-color: yellow;
+position: relative;
+}
+#test1 #left{
+height: 100px;
+width: 200px;
+float: left;
+left: -100%;
+margin-left: 200px;
+background-color: blue;
+position: relative;
+
+}
+#test1 #right{
+height: 100px;
+width: 200px;
+float: left;
+left: -200px;
+background-color: blue;
+position: relative;
+
+}
+#test2 #main{
+height: 100px;
+background-color: red;
+}
+#test2 #left{
+height: 100px;
+width: 200px;
+float: left;
+background-color: blue;
+}
+#test2 #right{
+height: 100px;
+width: 200px;
+float: left;
+background-color: blue;
+}
 main{
   width: 87%;
   margin:0 auto;
 }
-#table{
+/* #table{
   padding: 20px; 
   margin-bottom: 30px;
-}
+} */
 </style>

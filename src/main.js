@@ -1,18 +1,18 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import VueResource from 'vue-resource'
-
-import router from './router'
 import App from './App'
-
+import router from './router'
 import store from "./store/index.js";
+import VueResource from 'vue-resource'
+import axios from 'axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/css/global.css'
 import './assets/iconfont/iconfont.css'
-import axios from 'axios'
 import "@/utils/component.js"//全局组件
+import VueShowdown from 'vue-showdown'
+import Markdown from 'vue-meditor'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
@@ -21,16 +21,12 @@ Vue.config.productionTip = false
 // axios.defaults.withCredentials = true
 Vue.use(VueResource)
 Vue.http.options.credentials = true
-
-
 Vue.use(ElementUI)
-
-// 创建路由
-// const router = new Router({
-//   mode: "history",
-//   routes: Routes
-// })
-
+Vue.use(VueShowdown,{
+  options: {
+    emoji: true
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

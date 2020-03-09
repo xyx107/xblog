@@ -3,13 +3,13 @@
         <el-form  id="add-form" >
             <h1>编辑文章</h1>
             <el-form-item >
-                <el-input placeholder="请输入文章主题" v-model="blog.title"></el-input>
+                <el-input placeholder="请输入文章主题" v-model="blog.title" ></el-input>
             </el-form-item>
             <el-form-item >
                 <el-input placeholder="请输入文章内容" type="textarea" :autosize="{ minRows: 8, maxRows: 15}" v-model="blog.content"></el-input>
             </el-form-item>
             <el-form-item label="标签">
-                <el-checkbox-group v-model="blog.tags">
+                <el-checkbox-group v-model="blog.tag">
                     <el-checkbox label="Vue" name="tag"></el-checkbox>
                     <el-checkbox label="GO" name="tag"></el-checkbox>
                     <el-checkbox label="安全" name="tag"></el-checkbox>
@@ -17,7 +17,10 @@
                 </el-checkbox-group >
             </el-form-item>
             <el-form-item label="">
-                <el-col :span=12><el-button type="primary" v-on:click.prevent="addBlog()">提交（新增或者编辑）</el-button></el-col>
+                <el-col :span=12><el-button type="primary" v-on:click.prevent="addBlog()">提交（新增</el-button></el-col>
+            </el-form-item> 
+            <el-form-item label="">
+                <el-col :span=12><el-button type="primary" v-on:click.prevent="editBlog">提交编辑）</el-button></el-col>
             </el-form-item>           
         </el-form>
         <div id="edit-show">
@@ -39,18 +42,21 @@
 
 <script>
 import marked from 'marked'
-import { Addblog, Deleteblog, Editblog } from '@/api/article.js'
+import { Addblog, Deleteblog, Editblog, Singleblog } from '@/api/article.js'
 export default {
   name: 'MdEdit',
   components: {},
+  props:{
+  },
   data() {
     return {
+        id: null,
         blog: {
-            title: "",
-            content: "",
-            tags:[] ,
-            submitted:false
-        }
+            title: '',
+            content: '',
+            tag: ''
+        },
+        submitted:false
         
     }
   },
@@ -63,33 +69,49 @@ export default {
           })
       },
       editBlog() {
-          Editblog(this.blog).then(Response => {
-              this.$message.success('编辑成功')
+          const data = {
+               title: this.blog.title,
+               content: this.blog.content,
+               tag: this.blog.tag
+          }
+          Editblog(this.id, data).then(Response => {
+              this.$message.success('this.blog.id')
           }).catch(error => {
               this.$message.error()
           })
       },
-      post() {
-          this.$http.post("https://jsonplaceholder.typicode.com",{
-          title: this.blog.title,
-          body: this.blog.content,
-          userId: 1
-          })
-            .then(function(data){
-                console.log(data);
-                this.submitted = true
-            })
-   } 
+      getArticle() {
+        const id = this.$route.parmas.id
+        console.log(this.$route.parmas.id)
+        Singleblog(id).then(res => {
+          this.blog = res.data
+          console.log(id)
+      })
+      },
+//       post() {
+//           this.$http.post("https://jsonplaceholder.typicode.com",{
+//           title: this.blog.title,
+//           body: this.blog.content,
+//           userId: 1
+//           })
+//             .then(function(data){
+//                 console.log(data);
+//                 this.submitted = true
+//             })
+//    } 
   },
-  computed: {
-      notePreview () {
-          return marked(this.blog.content)
-      }
-  }
+//   computed: {
+//       notePreview () {
+//           return marked(this.blog.content)
+//       }
+//   },
+  created() {
+    this.getArticle()
+   },
 }
 </script>
 
-<style>
+<style scoped>
 #main-body{
   display: flex;
   flex-direction: row;

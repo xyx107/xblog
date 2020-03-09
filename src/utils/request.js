@@ -17,7 +17,6 @@ service.interceptors.request.use(
             // config.headers.Authorization = `yxy ${cookie.get("token")}`
             config.headers['Content-Type'] = text/plain
             config.headers['Authorization'] = `yxy ${cookie.get("token")}`
-          
             console.log(config)
         return config
     }, error => {

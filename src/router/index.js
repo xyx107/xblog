@@ -12,10 +12,12 @@ import User from '@/views/layout/User.vue'
 import MdEdit from '../views/layout/MdEdit'
 import Main from '../views/layout/components/Main'
 import Comment from '../views/layout/Comment'
-import AddBlog from '../views/layout/AddBlog'
+// import AddBlog from '../views/layout/AddBlog'
 import Category from '../views/layout/Category'
 import ManageArtilce from '../views/layout/ManageArtilce'
 
+import AddBlog from '../views/layout/AddBlog'
+import '@/views/layout/index'
 import File from '../views/article/File'
 import About from '../views/article/About'
 import Friend from '../views/article/Friend'
@@ -45,10 +47,21 @@ const router = new Router({
             component: Forgetpw
         },
         {
+            path: "/mdedit",
+            name: "mdedit",
+            component: MdEdit
+        },
+        {
+            path: "/addblog",
+            name: "addblog",
+            component: AddBlog
+        },
+        {
             path: "/article",
             name: "article",
             component: ShowBlogs,
             children: [
+
                 { path: "/file", name: "file", component: File },
                 { path: "/messageboard", name: "messageboard", component: MessageBoard },
                 { path: "/about", name: "about", component: About },
@@ -59,29 +72,35 @@ const router = new Router({
             path: '/article/:id',
             component: SingleBlog
         },
+        // {
+        //     path: "/admin",
+        //     name: "admin",
+        //     component: () => import('@/views/layout/index'),
+        //     children: [
+        //         { path: "/user", name: "user", component: User },
+        //         { path: "/comment", name: "comment", component: Comment },
+        //         { path: "/category", name: "category", component: Category },
+        //         { path: "/manageartilce", name: "manageartilce", component: ManageArtilce },
+        //     ]
+        // },
         {
-            path: "/admin",
-            name: "admin",
-            component: () => import('@/views/layout/index'),
+            path: "/sidebar",
+            name: "sidebar",
+            component: () => import('@/views/layout/components/SideBar'),
             children: [
+                { path: "/main", name: "main", component: Main },
                 { path: "/user", name: "user", component: User },
-                { path: "/addblog", name: "addblog", component: AddBlog },
                 { path: "/comment", name: "comment", component: Comment },
                 { path: "/category", name: "category", component: Category },
                 { path: "/manageartilce", name: "manageartilce", component: ManageArtilce },
             ]
-        },
-        {
-            path: "/mdedit",
-            name: "mdedit",
-            component: MdEdit
         },
         
     ]
 
 })
 
-const whiteRouter = ['/friend','/about','/login', '/register', '/forgetpw']//路由白名单
+const whiteRouter = ['/login', '/register', '/forgetpw','/article']//路由白名单
 
 router.beforeEach((to, from, next) => {
     if(getToken()) {

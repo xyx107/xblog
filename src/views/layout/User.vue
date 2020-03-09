@@ -1,6 +1,5 @@
 <template>
   <div >
-      <h2>用户管理</h2>
       <main>
         <el-table id="table" show-overflow-tooltip="true" :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" ref="multipleTable">
           <el-table-column type="selection" width="80"></el-table-column>
@@ -60,9 +59,9 @@ main{
   width: 87%;
   margin:0 auto;
 }
-#table{
+/* #table{
   padding: 20px; 
   margin-bottom: 30px;
-}
+} */
 
 </style>

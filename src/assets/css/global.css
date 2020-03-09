@@ -3,29 +3,24 @@ html, body, #app{
 height: 100%;
 margin: 0;
 padding: 0;
+background-attachment: fixed;
 }
 body{
-    /* background: url(https://s2.ax1x.com/2019/04/08/A5Gx6e.jpg) no-repeat; */
-    /* background-attachment: scroll; */
+    /* background: url(../imgs/qj6624059037.jpg) no-repeat; */
     font-family: Lucida Sans Unicode,Verdana,"Hiragino Sans GB",-apple-system,Microsoft Yahei,sans-serif;
     /* filter:Alpha(opacity=80) ie*/
-    background-attachment: fixed;
-}
+} 
 a{
     text-decoration: none ;
 }
-body:before{
-    background: url(https://s2.ax1x.com/2019/04/08/A5Gx6e.jpg) no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-attachment: scroll;
+
+ /* #app{
+    background: rgba(255, 255, 255, 0.7);
+    background-attachment: local, scroll;
     width: 100%;
-    height: 100%;
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;/*-1 可以当背景*/
-    -webkit-filter: blur(3px);
-    filter: blur(7px);
-}
+    z-index: -1;/*-1 毛玻璃*/
+   /* -webkit-filter: blur(3px);
+    filter: blur(5px); 
+}  */
+

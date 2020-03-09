@@ -1,5 +1,6 @@
 <template>
   <div >
+      <sider-bar/>
       <manage-header/>
       <Main/>
       <manage-footer/>

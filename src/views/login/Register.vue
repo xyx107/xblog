@@ -1,8 +1,16 @@
 <template>
-  <div>
-    <div id="main-body">
-      <div class="menu">
-        <ul>
+  <div id="main">
+    <section id="left">
+      <h2>Hi Blog!</h2>
+      <h2>欢迎注册</h2>
+        <div>已有账号？<router-link to="/login">
+              <el-link type="primary">登陆</el-link>
+            </router-link>
+        </div>
+    </section>
+    <section id="right">
+        
+        <!-- <ul>
           <li>
             <router-link to="/login">
               <el-link type="primary">登录</el-link>
@@ -13,8 +21,7 @@
               <el-link type="primary">注册</el-link>
             </router-link>
           </li>
-        </ul>
-      </div>
+        </ul> -->
       <div id="main-form">
         <el-form :model="registerForm" ref="registerRef" :rules="registerFormrRules">
           <el-form-item prop="username">
@@ -39,9 +46,10 @@
           <el-form-item class="foot">
             <el-button class="subbtn" type="primary" @click="register()" :disabled="registerbtnStatus">注册</el-button>
           </el-form-item>
-        </el-form>
+        
+      </el-form>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -157,34 +165,39 @@ export default {
 </script>
 
 <style scoped>
-#main-body {
+#main{
+  height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.menu {
-  margin-top: 10%;
-  height: 20px;
-  font-size: 20px;
+#left{
+  margin: 0 auto;
 }
-.menu li {
-  display: inline-block;
-  width: 88px;
-  line-height: 40px;
-  border-radius: 2px;
-  cursor: pointer;
+h2{
+  font-family: 'Adele';
+}
+#right {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #main-form {
-  width: 60%;
-  /* background-color: rgba(20, 120, 120, 0.1); */
-  border-radius: 5%;
-  padding: 45px 10px 25px 10px;
-  margin-top: 0px;
+  height: 380px;
+  width: 480px;
+  background: #fff;
+    border-radius: 5px;
+  /* background-color:#409eff1a; */
+  padding: 10px 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.subbtn {
+  width: 200px;
 }
 .foot {
   display: flex;

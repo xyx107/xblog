@@ -1,22 +1,14 @@
 <template>
-  <div>
-    <div id="main-body">
-      <div class="menu">
-        <ul>
-          <li>
-            <router-link to="/login">
-              <el-link type="primary">登录</el-link>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/register">
+  <div id="main">
+    <section id="left">
+      <h2>Hi Blog!</h2>
+      <h3>欢迎登陆</h3>
+        <div>还没有账号？<router-link to="/register">
               <el-link type="primary">注册</el-link>
             </router-link>
-          </li>
-          <!-- <li v-for="item in menuTab" :key="item.index" :class="{'current': iscurrent}"
-            @click="switchMenu(item)">{{item.name}}</li>-->
-        </ul>
-      </div>
+        </div>
+    </section>
+    <section id="right">
       <div id="main-form">
       <el-form  :model="loginForm" ref="loginFormRef" :rules="logRules" size="medium">
         <el-form-item status-icon prop="username">
@@ -63,12 +55,10 @@
                 </router-link>
               </el-col>
             </el-row>
-           
-            
         </el-form-item>
       </el-form>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -117,7 +107,7 @@ export default {
           this.$store.dispatch('user/login', this.loginForm)
           .then( () => {
           this.$router.push({
-            name: 'admin'
+            name: 'sidebar'
             })
           }).catch(error => {});  
         }else {
@@ -129,17 +119,45 @@ export default {
 }
 </script>
 
-<style >
-#main-body {
+<style  scoped >
+#main{
+  background: url(/assets/imgs/background.jpg) no-repeat; 
+  opacity: 1; 
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#left{
+  margin: 0 auto;
+  
+}
+h2{
+  font-family: 'Adele';
+  font-size: 50px;
+}
+#right {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#main-form {
+  height: 320px;
+  width: 480px;
+  background: #fff;
+  border-radius: 5px;
+  /* background-color:#409eff1a; */
+  padding: 10px 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.menu {
-  margin-top: 10%;
-  height: 20px;
+.subbtn {
+  width: 200px;
+}
+/* .menu {
   font-size: 20px;
 }
 .menu li {
@@ -148,20 +166,10 @@ export default {
   line-height: 40px;
   border-radius: 2px;
   cursor: pointer;
-}
-#main-form {
-  width: 60%;
-  /* background-color:#409eff1a; */
-  padding: 45px 10px;
-  margin-top: 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+} */
 
-.subbtn {
-  width: 200px;
-}
 /* //width=650px的时候form宽度固定 */
+@media screen {
+  
+}
 </style>

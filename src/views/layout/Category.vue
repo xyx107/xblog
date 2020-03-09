@@ -1,6 +1,5 @@
 <template>
   <div >
-      <h2>分类管理</h2>
       <main>
         <el-table id="table" show-overflow-tooltip="true" :data="tableData" ref="multipleTable">
           <el-table-column type="selection" width="80"></el-table-column>
@@ -51,8 +50,8 @@ main{
   width: 87%;
   margin:0 auto;
 }
-#table{
+/* #table{
   padding: 20px; 
   margin-bottom: 30px;
-}
+} */
 </style>

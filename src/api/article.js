@@ -1,5 +1,12 @@
 import service from '@/utils/request'
 
+// 列表,data是 linite和offset
+export function Bloglist(data) {
+    return service.request({
+        method: "get",
+        url: `/article?page=${data}`,
+})
+}
 // 新增
 export function Addblog(data) {
    return service.request({
@@ -9,6 +16,31 @@ export function Addblog(data) {
 })
 }
 
+// 编辑
+export function Editblog(id,data) {
+    return service.request({
+        method: "put",
+        url: `/article/${id}`,
+        data
+})
+}
+
+// 删除
+export function Deleteblog(delarr) {
+    return service.request({
+        method: "delete",
+        url: `/article/${delarr}`
+})
+}
+
+// 批量删除
+export function Deleteblogs(data) {
+    return service.request({
+        method: "delete",
+        url: '/article',
+        data
+})
+}
 // 点赞
 export function Dianzan(data) {
     return service.request({
@@ -18,31 +50,6 @@ export function Dianzan(data) {
 })
 }
 
-// 列表,data是 linite和offset
-export function Bloglist(data) {
-    return service.request({
-        method: "get",
-        url: '/article',
-        data
-})
-}
-
-// 编辑
-export function Editblog(data) {
-    return service.request({
-        method: "put",
-        url: '/article/{id}',
-        data
-})
-}
-
-// 删除
-export function Deleteblog(delarr) {
-    return service.request({
-        method: "delete",
-        url: `article/${delarr}`
-})
-}
 // 文章详情
 export function Singleblog(id) {
     return service.request({
