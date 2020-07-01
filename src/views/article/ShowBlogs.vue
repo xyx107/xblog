@@ -59,6 +59,14 @@ export default {
       this.blogs = data.data.articleList;
       this.totalCount =  data.data.totalCount;
     });
+  },
+  beforeRouteEnter (to, from, next){
+    window.document.body.style.backgroundColor = 'blue';
+    next();
+  },
+  beforeRouteLeave(to, from, next) {
+    window.document.body.style.backgroundColor = '';
+    next();
   }
 };
 </script>
@@ -93,8 +101,8 @@ li {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  margin: 0 ;
-  padding: 20px;
+  margin: 20px;
+  /* padding: 20px; */
 }
 #single-blog {
   width: 70%;

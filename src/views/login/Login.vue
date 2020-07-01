@@ -1,15 +1,17 @@
 <template>
-  <div id="main">
+   <div id="main" :style="note"> 
     <section id="left">
       <h2>Hi Blog!</h2>
-      <h3>欢迎登陆</h3>
-        <div>还没有账号？<router-link to="/register">
+     
+        <div>
+          <h5> 欢迎登陆 | 还没有账号？
+            <router-link to="/register">
               <el-link type="primary">注册</el-link>
             </router-link>
+          </h5>
         </div>
     </section>
-    <section id="right">
-      <div id="main-form">
+    <section id="main-form">
       <el-form  :model="loginForm" ref="loginFormRef" :rules="logRules" size="medium">
         <el-form-item status-icon prop="username">
           <el-input
@@ -27,37 +29,21 @@
             v-model="loginForm.password"
           ></el-input>
         </el-form-item>
-        <el-form-item id="getCode" prop="code">
-          <el-row :gutter="12">
-            <el-col :span="15">
-              <el-input
-                prefix-icon="iconfont icon-mima"
-                placeholder="请输验证码"
-                v-model="loginForm.code"
-              ></el-input>
-            </el-col>
-
-            <el-col :span="7">
-              <el-button type="info" plain @click="getCode()">获取验证码</el-button>
-            </el-col>
-          </el-row>
-        </el-form-item>
-        <el-form-item label-width="60px"></el-form-item>
+       
 
         <el-form-item class="foot">
-          <el-row :gutter="19">
-              <el-col :span="15">
+          <el-row :gutter="60">
+              <el-col :span="12">
                 <el-button class="subbtn" type="primary" @click="login()" >登录</el-button>
               </el-col>
-              <el-col :span="9">
+              <el-col :span="12" >
                 <router-link to="/forgetpw">
-                  <el-link type="primary">忘记密码</el-link>
+                  <el-link class="linkbtn" type="primary">忘记密码</el-link>
                 </router-link>
               </el-col>
             </el-row>
         </el-form-item>
       </el-form>
-      </div>
     </section>
   </div>
 </template>
@@ -65,8 +51,7 @@
 <script>
 import service from '@/utils/request.js'
 import { Login } from '@/api/login.js'
-import {setToken} from '@/utils/user.js'
-
+import { setToken } from '@/utils/user.js'
 // import { Message } from 'element-ui';
 
 export default {
@@ -74,6 +59,13 @@ export default {
   components: {},
   data() {
     return {
+      // backgroundImage:'url(' + require('src/assets/imgs/bg1.jpg') + ')',
+       note: {
+            backgroundImage: "url(" + require("@/assets/imgs/bg.jpg") + ")",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "100% 100%",
+            marginTop: "0",
+          },
       loginForm:{
         username: 'archerx',
         password: 'archerx',
@@ -97,7 +89,7 @@ export default {
           name: 'register'
           })
     },
-    resetLoginForm() {
+      resetLoginForm() {
       // console.log(this.$refs)
       this.$refs.loginFormRef.resetFields();
     },
@@ -107,7 +99,7 @@ export default {
           this.$store.dispatch('user/login', this.loginForm)
           .then( () => {
           this.$router.push({
-            name: 'sidebar'
+            name: 'article'
             })
           }).catch(error => {});  
         }else {
@@ -115,39 +107,40 @@ export default {
         }
       })
     }
-  }
+  },
+  // beforeRouteEnter (to, from, next){
+  //   document.getElementsByTagName('body')[0].className = 'bgc';
+  //   // window.document.body.style.background = 'blue';
+  //   next();
+  // },
+  // beforeRouteLeave(to, from, next) {
+  //   document.body.removeAttribute('class', 'bgc');
+  //   // window.document.body.style.background = '';
+  //   next();
+  // }
 }
 </script>
 
-<style  scoped >
-#main{
-  background: url(/assets/imgs/background.jpg) no-repeat; 
-  opacity: 1; 
+<style  scoped>
+#main {
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
 }
-#left{
-  margin: 0 auto;
-  
-}
+
 h2{
   font-family: 'Adele';
   font-size: 50px;
 }
-#right {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 #main-form {
-  height: 320px;
-  width: 480px;
+  height: 260px;
+  width: 400px;
   background: #fff;
   border-radius: 5px;
-  /* background-color:#409eff1a; */
+  background-image:linear-gradient(to bottom right, #ffbc4041,#ff66401e);
   padding: 10px 10px;
   display: flex;
   flex-direction: column;
@@ -155,21 +148,17 @@ h2{
   align-items: center;
 }
 .subbtn {
-  width: 200px;
+  width: 150px;
 }
-/* .menu {
-  font-size: 20px;
-}
-.menu li {
-  display: inline-block;
-  width: 88px;
-  line-height: 40px;
-  border-radius: 2px;
-  cursor: pointer;
-} */
 
-/* //width=650px的时候form宽度固定 */
-@media screen {
-  
+/* width=650px的时候form宽度固定 */
+@media (max-width: 750px){
+  #mian{
+    display: flex;
+    flex-direction: column;
+  }
+  #left{
+    width: 100%;
+  }
 }
 </style>

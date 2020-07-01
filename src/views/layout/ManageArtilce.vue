@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="body">
     
     <main class="main">
-      <el-backtop target=".main">
+      <el-backtop target=".body">
           <div
             style="{ height: 100%; width: 100%; text-align: center; }">
             <img src="https://blog.ixuchao.cn/usr/themes/Plain-master/images/commentsbg.gif" alt />
@@ -95,7 +95,7 @@ export default {
         console.log('meile')
       }else {
         Bloglist(this.id).then(data => {
-        this.blogs = this.blogs.concat(data.data.articleList)
+          this.blogs = this.blogs.concat(data.data.articleList)
       })
       }
    },
@@ -175,7 +175,7 @@ export default {
 
 <style scoped>
 main {
-  width: 87%;
+  width: 100%;
   margin: 0 auto;
 }
 /* #table {

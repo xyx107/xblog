@@ -51,14 +51,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),//屏蔽错误
+    // new webpack.HashedModuldsPlugin(),//哈希
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
       inject: true
     }),
-    // copy custom static assets
+    // copy custom static assets，webpack只拷贝需要打包的文件,此插件可以拷贝指定的文件
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),

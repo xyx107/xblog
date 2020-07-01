@@ -213,7 +213,7 @@
                 @scroll="previewScroll"
                 @mouseenter="mousescrollSide('right')"
             >
-                <div v-html="html" ref="previewInner"></div>
+                <div v-html="html" ref="previewInner" ></div>
             </div>
         </div>
         <!--    预览图片-->

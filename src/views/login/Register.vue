@@ -1,11 +1,14 @@
 <template>
-  <div id="main">
+  <div id="main" :style="note">
     <section id="left">
       <h2>Hi Blog!</h2>
-      <h2>欢迎注册</h2>
-        <div>已有账号？<router-link to="/login">
-              <el-link type="primary">登陆</el-link>
+      
+        <div>
+          <h4>欢迎注册|已有账号？
+            <router-link to="/login">
+              <el-link type="primary">登陆 |</el-link>
             </router-link>
+          </h4>
         </div>
     </section>
     <section id="right">
@@ -62,10 +65,16 @@ export default {
   components: {},
   data() {
     return {
+       note: {
+            backgroundImage: "url(" + require("@/assets/imgs/bg.jpg") + ")",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "100% 100%",
+            marginTop: "0",
+          },
       registerForm: {
-        username: "bbbbb",
-        email: "2223333333@qq.com",
-        password: "bbbbb",
+        username: "yxy107",
+        email: "1297184665@qq.com",
+        password: "yxy107",
         code: ''
       },
       timer: null,
@@ -79,7 +88,8 @@ export default {
           { required: true, message: "请输入用户名", trigger: "blur" }
         ],
         email: [
-          { required: true, message: "请输入邮箱", trigger: "blur" }
+          { required: true, message: "请输入邮箱", trigger: "blur" },
+          // { mix:5, message: '长度大于5个字符', trigger: "blur" }
         ],
         password: [
           { required: true, message: "请输入密码", trigger: "blur" },
@@ -100,14 +110,15 @@ export default {
           this.$router.push({
             name: "login"
           })
+          this.$options.methods.clearCountDown()
         }).catch(error => {
           this.$message.error("注册失败！")
         })
       })
-    },   
+    },
     updataButtonStatus(params) {
-        codebtnStatus.val = params.val;
-        codebtnStatus.text = params.text;
+        this.codebtnStatus.val = params.val;
+        this.codebtnStatus.text = params.text;
     },
     countDown(number) {
       if(this.timer) { //防止有没清除的定时器
@@ -116,25 +127,22 @@ export default {
       let time = number
       this.timer = setInterval(() => {
         time--
-        console.log(typeof(this.timer))
         if(time === 0) {
-          this.$options.methods.updataButtonStatus({
-            val: false,
-            text: '再次获取'}
-          )
           clearInterval(this.timer) //清除定时器
-          
+          this.updataButtonStatus({
+            val: false,
+            text: '再次获取'
+          })
         }else {
-          this.codebtnStatus = {
+          // console.log(time)
+          this.updataButtonStatus ({
             val: true ,
-            text: `倒计时${time}秒`
-          }
+            text: `${time}秒后重发`
+          })
         }
       }, 1000)
     },
-    getcode()  {
-      
-      // console.log(typeof(this.timer.value))
+    getcode() {
       this.codebtnStatus = {
         val: true,
         text: '发送中'
@@ -151,15 +159,23 @@ export default {
           this.$message.error('邮箱格式有误，请重新输入！！');
           return false;
       }
-      // debugger
-      GetCode(Email).then( response => {
+      // var that = this
+      GetCode(Email).then( (response) => {
           // let data = response.data
-          this.$options.methods.countDown(5)
-          console.log('this.codebtnStatus')
+          this.countDown(60)
         }).catch( error => {
           console.log(error)
         })
-    }
+    },
+    clearCountDown () {
+        // 还原验证码按钮默认状态
+        updataButtonStatus({
+          val: false,
+          text: '获取验证码'
+        })
+        // 清除倒计时
+        clearInterval(timer.value)
+      }
   }
 }
 </script>
@@ -168,27 +184,21 @@ export default {
 #main{
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
-#left{
-  margin: 0 auto;
-}
+
 h2{
   font-family: 'Adele';
+  font-size: 50px;
 }
-#right {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 #main-form {
   height: 380px;
   width: 480px;
   background: #fff;
-    border-radius: 5px;
-  /* background-color:#409eff1a; */
+  border-radius: 5px;
+  background-image:linear-gradient(to bottom right, #ffbc4041,#ff66401e);
   padding: 10px 10px;
   display: flex;
   flex-direction: column;

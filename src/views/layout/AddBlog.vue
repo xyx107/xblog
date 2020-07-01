@@ -1,39 +1,43 @@
 <template>
   <div id="addblog">
-    <el-form ref="form"  :model="blog" id="nav" label-width="50px">
-      <el-form-item>
-        <el-button type="primary" @click.prevent="addBlog()">提交</el-button>
-      </el-form-item>
-      <el-form-item label="标题" inline-message="true">
-        <el-input v-model="blog.title"></el-input>
-      </el-form-item>
-      <el-form-item label="分类" >
-        <el-select v-model="blog.comment" filterable placeholder="请选择分类">
-          <el-option
-            v-for="item in option"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="标签">
-        <el-select
-          v-model="blog.tags.tag"
-          multiple
-          filterable
-          allow-create
-          default-first-option
-          placeholder="请输入标签"
-        >
-          <el-option v-for="item in option" :key="item.value" :label="item.label" :value="item.value"></el-option>
-        </el-select>
-      </el-form-item>
-      
-    </el-form>
     <section id="content" >
+      <el-input v-model="blog.title" placeholder="请输入文章标题"></el-input>
       <Markdown v-model="blog.content"/>
     </section>
+    <aside id="nav">
+      <el-form ref="form" :model="blog"  label-width="50px">
+        <!-- <el-form-item label="标题" inline-message="true">
+          <el-input v-model="blog.title"></el-input>
+        </el-form-item> -->
+        <el-form-item label="分类" >
+          <el-select v-model="blog.comment" filterable placeholder="请选择分类">
+            <el-option
+              v-for="item in option"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="标签">
+          <el-select
+            v-model="blog.tags.tag"
+            multiple
+            filterable
+            allow-create
+            default-first-option
+            placeholder="请输入标签"
+          >
+            <el-option v-for="item in option" :key="item.value" :label="item.label" :value="item.value"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click.prevent="addBlog()">提交</el-button>
+        </el-form-item>
+      </el-form>
+    </aside>
+    
+    
   </div>
 </template>
 
@@ -50,17 +54,17 @@ export default {
     return {
       blog: {
         title: "",
-        tags: [{tag: 1},],
+        tags: '',
         //fenlei: [],
         content: ''
       },
       option:[{
           value: "选项1",
-          label: "黄金糕"
+          label: "vue"
         },
         {
           value: "选项3",
-          label: "蚵仔煎"
+          label: "typescript"
         }],
     };
   },
@@ -89,33 +93,35 @@ export default {
 
 <style scoped>
 #addblog {
-  background-color: #eee;
-  width: 100%;
-}
-.el-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
-  margin: 0 auto;
-  padding-top: 20px;
-}
-.markdown {
-  margin: 0;
-}
-.el-input {
-  width: 500px;
-}
-.el-button {
-    margin-right: 20px;
-}
-#content {
+  flex-wrap: wrap;
+  background-color: #eee;
   width: 100%;
-  margin-left: 0;
+}
+#nav{
+margin: 0 auto ;
+ }
+.el-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+  width: 80%;
 }
 .el-form-item {
   /* margin-right: 80px; */
   padding: 0;
+}
+.el-input {
+}
+.el-button {
+}
+#content {
+  /* width: 100%; */
+  /* margin-left: 0; */
+  height: 100%;
 }
 
 .markdown-here-wrapper {
@@ -312,9 +318,8 @@ table tr th {
   border: 1px solid #009688;
   background-color: #009688;
 }
-</style>
-    <style>
-#area > table {
+
+/* #area > table {
   width: 100%;
   table-layout: fixed;
 }
@@ -342,5 +347,5 @@ table tr th {
 .clearfix:before {
   content: "";
   display: table;
-}
+} */
 </style>

@@ -44,12 +44,11 @@ export default {
 
 <style scoped>
 #messageBord{
-  width: 71.8%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  margin: 0 auto;
-  padding: 20px
+  margin: 0 ;
 }
 #listByTime ul{
   padding-left: 0;

@@ -26,6 +26,11 @@ export function getUserName(){
 export function removeUserName(){
     return cookie.remove(usernameKey);
 }
+
+// export function setUserName(value){
+//     return sessionStorage.getItem('referrer');
+// }
+
 // export function setUserName(value){
 //     return localStorage.setItem(UserName, value);
 // }

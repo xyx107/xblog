@@ -60,7 +60,7 @@
             <span>欢迎admin</span>
             <i class="el-icon-setting" style="margin-right: 15px"></i>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>退出</el-dropdown-item>
+              <el-dropdown-item><a href="" @click="logout()">退出</a></el-dropdown-item>
               <el-dropdown-item><router-link to="/article">网站</router-link></el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>  
@@ -87,7 +87,15 @@ export default {
   components: {},
   data() {
     return {};
-  }
+  },
+  logout() {
+      this.$store.dispatch('user/logout')
+      .then(() => {
+        this.$router.push({
+          name: 'login'
+        })
+      })
+    }
 };
 </script>
 

@@ -8,11 +8,29 @@ import VueResource from 'vue-resource'
 import axios from 'axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
+
 import './assets/css/global.css'
 import './assets/iconfont/iconfont.css'
 import "@/utils/component.js"//全局组件
+
 import VueShowdown from 'vue-showdown'
 import Markdown from 'vue-meditor'
+
+import echarts from 'echarts'
+import 'echarts/lib/chart/line'
+
+import bmap from 'vue-baidu-map'
+
+// import VueFetch, { $fetch } from './utils/fetch'
+
+// Vue.use(VueFetch, {
+//   baseUrl: 'http://localhost:3000/',
+// })
+Vue.prototype.$echarts = echarts;
+
+Vue.use(bmap, {
+  ak: 'anjbBExPuXW4tkbhblI9UpXkOgIw95OW'
+})
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false

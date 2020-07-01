@@ -59,7 +59,8 @@ const router = new Router({
         {
             path: "/article",
             name: "article",
-            component: ShowBlogs,
+            component: () => import('@/views/article/'),
+            // component: ShowBlogs,
             children: [
 
                 { path: "/file", name: "file", component: File },
@@ -72,20 +73,9 @@ const router = new Router({
             path: '/article/:id',
             component: SingleBlog
         },
-        // {
-        //     path: "/admin",
-        //     name: "admin",
-        //     component: () => import('@/views/layout/index'),
-        //     children: [
-        //         { path: "/user", name: "user", component: User },
-        //         { path: "/comment", name: "comment", component: Comment },
-        //         { path: "/category", name: "category", component: Category },
-        //         { path: "/manageartilce", name: "manageartilce", component: ManageArtilce },
-        //     ]
-        // },
         {
-            path: "/sidebar",
-            name: "sidebar",
+            path: "/admin",
+            name: "admin",
             component: () => import('@/views/layout/components/SideBar'),
             children: [
                 { path: "/main", name: "main", component: Main },
@@ -100,7 +90,7 @@ const router = new Router({
 
 })
 
-const whiteRouter = ['/login', '/register', '/forgetpw','/article']//路由白名单
+const whiteRouter = ['/login', '/register', '/forgetpw','/article', '/addblog']//路由白名单
 
 router.beforeEach((to, from, next) => {
     if(getToken()) {

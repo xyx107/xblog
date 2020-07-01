@@ -1,10 +1,17 @@
 import service from '@/utils/request'
 
-// 列表,data是 linite和offset
+// 列表
 export function Bloglist(data) {
     return service.request({
         method: "get",
         url: `/article?page=${data}`,
+})
+}
+// 文章详情
+export function Singleblog(id) {
+    return service.request({
+        method: "get",
+        url: `/article/${id}`
 })
 }
 // 新增
@@ -15,7 +22,6 @@ export function Addblog(data) {
         data
 })
 }
-
 // 编辑
 export function Editblog(id,data) {
     return service.request({
@@ -50,13 +56,7 @@ export function Dianzan(data) {
 })
 }
 
-// 文章详情
-export function Singleblog(id) {
-    return service.request({
-        method: "get",
-        url: `/article/${id}`
-})
-}
+
 
 // 搜索
 export function Search(data) {
