@@ -21,7 +21,7 @@ import '@/views/layout/index'
 import File from '../views/article/File'
 import About from '../views/article/About'
 import Friend from '../views/article/Friend'
-import ShowBlogs from '../views/article/ShowBlogs'
+// import ShowBlogs from '../views/article/ShowBlogs'
 import SingleBlog from '../views/article/SingleBlog'
 import MessageBoard from '../views/article/MessageBoard'
 
@@ -70,7 +70,7 @@ const router = new Router({
             ]
         },
         {
-            path: '/article/:id',
+            path: '/article/1',
             component: SingleBlog
         },
         {
@@ -90,7 +90,7 @@ const router = new Router({
 
 })
 
-const whiteRouter = ['/login', '/register', '/forgetpw','/article', '/addblog']//路由白名单
+const whiteRouter = ['/login', '/register', '/forgetpw','/article', '/friend', "/category", "/admin", "/article/1"]//路由白名单
 
 router.beforeEach((to, from, next) => {
     if(getToken()) {

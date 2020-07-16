@@ -33,14 +33,14 @@ const actions = {  // 可以回调处理事情
   login({ commit }, loginForm) {
     return new Promise((resolve, reject) => {
       Login(loginForm).then(response => {
-        const data = response
-        commit('SET_TOKEN', data.data.token)
+        commit('SET_TOKEN', response.token)
         // commit('SET_NAME', data.username);
-        setToken(data.data.token)
+        setToken('data1.data.token')
         // setUserName(data.username);
         resolve(response)
       }).catch(error => {
         reject(error)
+        console.log(error)
       })
     })
   },

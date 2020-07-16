@@ -1540,7 +1540,7 @@ var Token = function (stream, type, state) {
     this.start = stream.start;
     this.end = stream.pos;
     this.string = stream.current();
-    this.type = type || null;
+    // this.type = type || null;
     this.state = state;
 };
 

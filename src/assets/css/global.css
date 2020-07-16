@@ -1,29 +1,44 @@
 html, body, #app{
-height: 100%;
-margin: 0;
-padding: 0;
-background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
-body{
-    font-family: Lucida Sans Unicode,Verdana,"Hiragino Sans GB",-apple-system,Microsoft Yahei,sans-serif;
-} 
+
 a{
     text-decoration: none ;
 }
+
+@font-face { 
+    font-family: 'ziti' ;
+    src: url('../有字库龙藏体.ttf'); 
+} 
+@font-face { 
+    font-family: 'zashu' ;
+    src: url('../851手写杂书体.ttf'); 
+}
+
+body{
+    font-family: Lucida Sans Unicode,Verdana,"Hiragino Sans GB",sans-serif;
+    background: url('../imgs/bg.jpg') no-repeat;
+    background-size: cover;
+    background-clip: content-box;
+    /* background-attachment: fixed, local, scroll; */
+    background-attachment: scroll,fixed, local;
+} 
+
 @media screen and (max-width: 750px) {
     #app{
         width: 750px;
     }
-    
 }
- /* #app{
-    /* filter:Alpha(opacity=80) ie
-    background: rgba(255, 255, 255, 0.7);
-    background-attachment: local, scroll;
-    width: 100%;
-    content: "";
-    z-index: 1;
-    -webkit-filter: blur(3px);
-    filter: blur(1px); 
-}  */
 
+#app{
+    box-sizing: border-box;
+    /* filter:Alpha(opacity=80) ie; */
+    background-color: rgba(255, 255, 255, 0.9); 
+    content: "";
+    z-index: -1; 
+    /* -webkit-filter: blur(3px); */
+    /* filter: blur(1px);  */               
+}

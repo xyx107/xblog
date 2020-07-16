@@ -8,6 +8,7 @@
             <img src="https://blog.ixuchao.cn/usr/themes/Plain-master/images/commentsbg.gif" alt />
           </div>
         </el-backtop>
+      <el-scrollbar style="height:100%">
       <el-table
         id="table"
         v-loading="loading"
@@ -51,6 +52,7 @@
           </template>
         </el-table-column>
       </el-table>
+    </el-scrollbar>
       <el-button @click="deleteArr()">删除选中项</el-button>
     </main>
   </div>
@@ -63,7 +65,55 @@ export default {
   components: {},
   data() {
     return {
-      blogs: [],
+      // blogs: [],
+      blogs: [{
+        readNum: 1,
+        comments: 2,
+        zanNum: 3,
+        id: 4,
+        createAt: 3,
+        title: 'vscode自定义vue模板'
+      },{
+        readNum: 1,
+        comments: 2,
+        zanNum: 3,
+        id: 4
+      },{
+        readNum: 1,
+        comments: 2,
+        zanNum: 3,
+        id: 4
+      },{
+        readNum: 1,
+        comments: 2,
+        zanNum: 3,
+        id: 4
+      },{
+        readNum: 1,
+        comments: 2,
+        zanNum: 3,
+        id: 4
+      },{
+        readNum: 1,
+        comments: 2,
+        zanNum: 3,
+        id: 4
+      },{
+        readNum: 1,
+        comments: 2,
+        zanNum: 3,
+        id: 4
+      },{
+        readNum: 1,
+        comments: 2,
+        zanNum: 3,
+        id: 4
+      },{
+        readNum: 1,
+        comments: 2,
+        zanNum: 3,
+        id: 4
+      }],
       id: 1,
       loading: true,
       search: '',
@@ -174,6 +224,9 @@ export default {
 </script>
 
 <style scoped>
+body .el-scrollbar__wrap {
+    overflow-x: hidden;
+}
 main {
   width: 100%;
   margin: 0 auto;

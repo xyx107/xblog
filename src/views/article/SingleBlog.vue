@@ -1,12 +1,13 @@
 <template>
   <div id="singleblog">
-    <header>
-      <p>Archex's Blog  /  </p>
+    <blog-header/>
+    <!-- <header> -->
+      <!-- <p>Archex's Blog  /  </p>
       <h2>{{blog.title}}</h2>
       <ul v-for="tags in blog.tag" :key="tags.insex">
         <li>{{tags}}</li>
       </ul>
-    </header>
+    </header> -->
     <section>
       <ul>
         <li>发布时间 {{blog.createAt}}</li>
@@ -61,7 +62,12 @@ export default {
   components: {},
   data() {
     return {
-        blog: {},
+        msg: 'fgukf dsylgtdh',
+        // blog: {},
+        blog: {
+          title: 'Python Enhancement Proposals',
+          content: '中文一般叫做python增强提案，简称PEP，多看看发现能了解到更多关于python的特性，为什么要设计这些特性，如何实现，或者怎样更好的运用甚至了解一些细分最佳实践，极力推荐。'
+        },
         id: this.$route.params.id,
         imageUrl: '',
         dialogFormVisible: false,

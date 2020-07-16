@@ -276,8 +276,8 @@ export default {
 
 <style scoped>
 .baidumap{
-  width: 800px;
-  height: 800px;
+  width: 500px;
+  height: 400px;
 }
 #friend{
   width: 100%;

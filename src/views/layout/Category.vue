@@ -19,8 +19,19 @@
             <template slot-scope="scope">
               <el-button
                 size="mini"
+                type="primary"
+                @click="save()">新建
+              </el-button>
+              <el-button
+                size="mini"
+                type="primary"
+                @click="handleUpdate(scope.$index, scope.row)">编辑
+              </el-button>
+              <el-button
+                size="mini"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                @click="handleDelete(scope.$index, scope.row)">删除
+              </el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -40,6 +51,16 @@ export default {
         { name: 'html', number: '3', ok: 'yes', child: 'yxy' },
         { name: 'go', number: '4', ok: 'yes', child: 'xc' },
       ]
+    }
+  },
+  methods: {
+    async save() {
+      const res = await this.$http.post('categories', this.model)
+      this.$router.push('/categories/list')
+      this.$message({
+        type: 'success',
+        $message: '保存成功'
+      })
     }
   }
 }

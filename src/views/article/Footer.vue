@@ -28,9 +28,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10px;
+  font-family: 'zashu';
 }
 #footer p{
-  font-size: 5px;
+  font-size: 17px;
   margin: 5px;
 }
 </style>

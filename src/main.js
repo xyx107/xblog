@@ -11,7 +11,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 import './assets/css/global.css'
 import './assets/iconfont/iconfont.css'
-import "@/utils/component.js"//全局组件
+import "@/utils/component.js"
 
 import VueShowdown from 'vue-showdown'
 import Markdown from 'vue-meditor'
@@ -29,7 +29,7 @@ import bmap from 'vue-baidu-map'
 Vue.prototype.$echarts = echarts;
 
 Vue.use(bmap, {
-  ak: 'anjbBExPuXW4tkbhblI9UpXkOgIw95OW'
+  ak: 'eKYyTMGxVCD3RVwr5kOhDXty6GhnxmSg'
 })
 
 Vue.prototype.$http = axios

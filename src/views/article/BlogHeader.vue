@@ -2,9 +2,9 @@
   <div>
     <header id="header">
       <h1 id="user">Archerx's Blog</h1>
-      <p class="description">我于今早重生，来时心怀暖阳。</p>
+      <p class="description" v-cloak>{{msg}}</p>
       <nav id="navbar">
-        <article>
+        <article v-if="this.$route.path == '/article'">
           <ul class="list" :router="true">
             <section><router-link to="article">首页</router-link></section>
             <section><router-link to="messageboard">留言</router-link></section>
@@ -29,7 +29,7 @@ export default {
   components: {},
   data() {
     return {
-
+      msg: '我于今早重生，来时心怀暖阳。'
     }
   }
 }
@@ -37,16 +37,22 @@ export default {
 
 <style scoped>
 #header{
-  margin: 25px 0 ;
+  margin: 45px 0 20px;
   border-bottom: 1px solid #d8dadc;
 }
-
+/* a{
+  color: #000;
+}
+a:visited{
+  text-decoration: none;
+} */
 .description{
   margin: 5px;
   color: #666;
 }
 #user{
   margin: 0;
+  font-family: 'zashu';
 }
 #navbar{
   display: flex;

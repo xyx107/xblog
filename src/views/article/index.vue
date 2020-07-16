@@ -23,7 +23,6 @@
     <section>
       <router-view></router-view>
     </section>
-    
     <blog-footer />
   </div>
 </template>
@@ -35,7 +34,21 @@ export default {
   components: {},
   data() {
     return {
-      blogs: [],
+      // blogs: [],
+      blogs: [
+        {title: 'PYTHON ENHANCEMENT PROPOSALS'},
+        {title: '聊一聊多CPU，多核，多进程，多线程'},
+        {title: 'PYTHON 沙箱逃逸总结一下'},
+        {title: 'PYTHON ENHANCEMENT PROPOSALS'},
+        {title: '聊一聊多CPU，多核，多进程，多线程fghfghdyutyjtujutjutjvh'},
+        {title: 'PYTHON 沙箱逃逸总结一下'},
+        {title: 'PYTHON ENHANCEMENT PROPOSALS'},
+        {title: '聊一聊多CPU，多核，多进程，多线程'},
+        {title: 'PYTHON 沙箱逃逸总结一下'},
+        {title: 'PYTHON ENHANCEMENT PROPOSALS'},
+        {title: '聊一聊多CPU，多核，多进程，多线程'},
+        {title: 'PYTHON 沙箱逃逸总结一下'},
+      ],
       totalCount: null,
       currentPage: null,
       page: {
@@ -57,26 +70,36 @@ export default {
       this.page.pageSize = val
     }
   },
-  mounted() {
-    Bloglist(1).then(data => {
-      this.blogs = data.data.articleList;
-      this.totalCount =  data.data.totalCount;
-    });
-  }
+  // created() {
+  //   Bloglist(1).then(data => {
+  //     this.blogs = data.data.articleList;
+  //     this.totalCount =  data.data.totalCount;
+  //   });
+  // }
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 body {
   font-family: Lucida Sans Unicode, Verdana, "Hiragino Sans GB", -apple-system,
     Microsoft Yahei, sans-serif;
+}
+h3{
+  font-family: 'zashu';
+  padding: 10px 0;
+}
+a:hover{
+  text-decoration: underline;
+}
+a:active{
+  color:#ba2636;
 }
 li {
   display: inline-block;
   list-style: none;
 }
 #show-blogs {
-  width: 80%;
+  width: 720px;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
@@ -84,7 +107,7 @@ li {
   /* padding: 20px; */
 }
 #single-blog {
-  width: 70%;
+  width: 60%;
 }
 .title {
   margin: 3px 5px 0 10px;
@@ -101,5 +124,8 @@ li {
 #page {
   display: flex;
   justify-content: flex-start;
+}
+.blog-footer{
+  position: fixed;
 }
 </style>
