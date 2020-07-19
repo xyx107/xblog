@@ -6,14 +6,22 @@ const usernameKey = 'username';
 export function getToken(){
     return cookie.get(adminToken);
 }
-
 export function setToken(token){
     return cookie.set(adminToken, token);
 }
-
 export function removeToken(){
     return cookie.remove(adminToken);
 }
+
+// export function getToken(){
+//     return sessionStorage.getItem(adminToken)
+// }
+// export function setToken(token){
+//     return sessionStorage.setItem(adminToken, token);
+// }
+// export function removeToken(){
+//     return sessionStorage.removeItem(adminToken);
+// }
 
 export function setUserName(value){
     return cookie.set(usernameKey, value);

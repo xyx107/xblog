@@ -9,6 +9,10 @@ a{
     text-decoration: none ;
 }
 
+h1{
+    margin: 0;
+    font-family: 'ziti' ;
+}
 @font-face { 
     font-family: 'ziti' ;
     src: url('../有字库龙藏体.ttf'); 
@@ -21,10 +25,12 @@ a{
 body{
     font-family: Lucida Sans Unicode,Verdana,"Hiragino Sans GB",sans-serif;
     background: url('../imgs/bg.jpg') no-repeat;
-    background-size: cover;
+    /* background-size: cover; */
+    background-size: 100% 100%;
     background-clip: content-box;
     /* background-attachment: fixed, local, scroll; */
-    background-attachment: scroll,fixed, local;
+    background-attachment:  fixed;
+    overflow: hidden/auto;
 } 
 
 @media screen and (max-width: 750px) {
@@ -42,3 +48,4 @@ body{
     /* -webkit-filter: blur(3px); */
     /* filter: blur(1px);  */               
 }
+

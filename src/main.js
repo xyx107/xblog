@@ -21,6 +21,14 @@ import 'echarts/lib/chart/line'
 
 import bmap from 'vue-baidu-map'
 
+import tinymce from 'tinymce'
+import VueTinymce from '@packy-tang/vue-tinymce'
+import 'tinymce/icons/default/icons'
+import './utils/tinymce/langs/zh_CN'
+
+Vue.prototype.$tinymce = tinymce
+Vue.use(VueTinymce)
+
 // import VueFetch, { $fetch } from './utils/fetch'
 
 // Vue.use(VueFetch, {

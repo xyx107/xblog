@@ -1,32 +1,45 @@
 <template>
-  <div id="singleblog">
-    <blog-header/>
-    <!-- <header> -->
-      <!-- <p>Archex's Blog  /  </p>
-      <h2>{{blog.title}}</h2>
-      <ul v-for="tags in blog.tag" :key="tags.insex">
-        <li>{{tags}}</li>
-      </ul>
-    </header> -->
-    <section>
-      <ul>
-        <li>发布时间 {{blog.createAt}}</li>
-        <li>访问量 {{blog.rearNum}}</li>
-        <li  @click="zan()"><i class="iconfont icon-love"></i>点赞{{blog.zanNum}}</li>
-        <!-- <li>评论数{{blog.comments}}</li> -->
-      </ul>
+  <div id="singleblog" v-cloak>
+    <header>
+      <h3>Archex's Blog /</h3>
+      <div class="title">
+        <h1>{{blog.title}}</h1>
+        <div class="icon">
+          <a href="https://github.com/xuchaoa"><img src="https://blog.ixuchao.cn/usr/themes/Plain-master/images/github.png" alt="github图标"></a>
+        </div>
+      </div>
+    </header>
+    <!-- <ul id="tags" v-for="tag in blog.tag" :key="tag.index">
+      <li>{{tag}}</li>
+    </ul> -->
+    <ul>
+      <li>发布时间 {{blog.createAt}}</li>
+      <li>访问量 {{blog.rearNum}}</li>
+      <li  @click="zan()"><i class="iconfont icon-love"></i>点赞{{blog.zanNum}}</li>
+      <!-- <li>评论数{{blog.comments}}</li> -->
+    </ul>
+    <section id="content" >
+      <el-scrollbar style=" height: 100%; ">
+        <div v-html="blog.content"> {{blog.content}}</div>
+      </el-scrollbar>
     </section>
-    <section id="content">
-      <div> afsdsgvsdt</div>
-      {{blog.content}}
-    </section>
     <section>
-      <el-form action="">
-        <el-button @click="consol">发表评论</el-button>
-        <el-input>
-          
-        </el-input>
-      </el-form>
+        <el-form id="messageForm" :model="messageForm" ref="messageFormRef" :rules="messageRules">
+          <el-form-item>
+            <el-input placeholder="恁叫哈~" v-model="comment.name"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-input placeholder="恁邮箱是哈~" v-model="comment.email"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-input placeholder="恁想说哈~" v-model="comment.content"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <img src="https://blog.ixuchao.cn/usr/themes/Plain-master/images/commentsbg.gif" alt="blackcat">
+            <el-radio v-model="notrobot">俺不是机器银</el-radio>
+            <el-button type="primary" @click="consol">发表评论</el-button>
+          </el-form-item>
+        </el-form>
     </section>
     <!-- <section id="comment">
     <el-button type="primary" @click="dialogFormVisible = true">我也要发表评论</el-button>
@@ -72,8 +85,10 @@ export default {
         imageUrl: '',
         dialogFormVisible: false,
         formLabelWidth: '20%',
+        notrobot: false,
         comment: {
-          name: '',
+          email: '',
+          name: 'ghf ',
           content: '',
           parentId: '',
         }
@@ -84,7 +99,24 @@ export default {
       console.log(this.blog.zanNum)
     },
     consol(){
-      
+      SubmitComment(this.blog.zanNum)
+      this.$refs.loginFormRef.validate( valid => {
+        if (valid){
+          this.$store.dispatch('user/login', this.loginForm)
+          .then( () => {
+            if(this.$route.query.required == location.hostname) {
+              this.$ruter.go(-1)
+            } else {
+              this.$router.push({
+                name: 'article'
+              })
+            }
+          }).catch(error => {});  
+        }else {
+          return false;
+        }
+      })
+      console.log(this.blog.zanNum)
     },
     submitComment() {
       const comment =  {
@@ -129,27 +161,24 @@ export default {
       }
   },
   created() {
-
     Singleblog(this.id).then( data => {
           this.blog = data.data;
           let timeRegex = /(.*)T(.{8})/;
       this.blog.createAt = this.blog.createAt.slice(0,19).split('-').join('/').replace(timeRegex,"$2 $1")
       })
   },
-  beforeRouteEnter (to, from, next){
-    window.document.body.style.backgroundColor = 'blue';
-    next();
-  },
-  beforeRouteLeave(to, from, next) {
-    window.document.body.style.backgroundColor = '';
-    next();
-  }
+  // beforeRouteEnter (to, from, next){
+  //   next();
+  // },
+  // beforeRouteLeave(to, from, next) {
+  //   next();
+  // }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #singleblog{
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -157,72 +186,109 @@ export default {
 }
 header{
   border-bottom: 1px solid #eee;
-  padding-top: 20px ;
+  margin-top: 40px ;
+  h1{
+    font-family: 'zashu';
+    color: #666;
+  }
+  h3{
+    margin: 5px 0;
+    font-weight: 50;
+  }
 }
-header h2,p{
-  margin: 5px 0;
+.title{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 3px 0 0;
+  padding: 0;
 }
+.icon{
+  line-height: 11px;
+  padding: 2px;
+  margin-top: 5px;
+}
+// #tags{
+//   height: 10px;
+//   display: inline;
+// }
 ul{
   margin-top: 0;
+  margin-left: 50%;
+  color: #666;
   padding-top: 0;
-}
-li{
-  list-style: none;
-  display: inline-block;
-  margin-left: 10px;
-  font-size: 12px;
-}
-#comment{
-  margin-top: 10px;
-  /* border: 1px solid #eee; */
-}
-#com{
-  padding-left: 0;
-  margin-top: 20px;
-}
-#com li{
-  border-bottom: 3px solid #eee;
-  width: 100%;
-  font-size: 16px;
-  margin-left: 0;
-  color: #aaa;
+  li{
+
+    list-style: none;
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 12px;
+  }
 }
 #content{
-  /* background-color: rgba(205, 200, 240, .3); */
-  height: 300px;
+  border: 2px solid #eee;
+  height: 600px;
 }
-#el-dialog__body{
-  padding: 0 20px;
+.el-scrollbar__wrap{ 
+  overflow-x: hidden;
 }
-#el-dialog__footer{
-  padding: 0 20px;
+#messageForm{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  .el-form-item{
+    margin: 0;
+  }
 }
+// #comment{
+//   margin-top: 10px;
+//   /* border: 1px solid #eee; */
+// }
+// #com{
+//   padding-left: 0;
+//   margin-top: 20px;
+// }
+// #com li{
+//   border-bottom: 3px solid #eee;
+//   width: 100%;
+//   font-size: 16px;
+//   margin-left: 0;
+//   color: #aaa;
+// }
+
+
+// #el-dialog__body{
+//   padding: 0 20px;
+// }
+// #el-dialog__footer{
+//   padding: 0 20px;
+// }
+
 /* form{
   background-color: #ffccff;
   display: flex;
   flex-direction: column;
 } */
-.avatar-uploader .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .avatar-uploader .el-upload:hover {
-    border-color: #409EFF;
-  }
-  .avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-  .avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
-  }
+// .avatar-uploader .el-upload {
+//     border: 1px dashed #d9d9d9;
+//     border-radius: 6px;
+//     cursor: pointer;
+//     position: relative;
+//     overflow: hidden;
+//   }
+//   .avatar-uploader .el-upload:hover {
+//     border-color: #409EFF;
+//   }
+//   .avatar-uploader-icon {
+//     font-size: 28px;
+//     color: #8c939d;
+//     width: 178px;
+//     height: 178px;
+//     line-height: 178px;
+//     text-align: center;
+//   }
+//   .avatar {
+//     width: 178px;
+//     height: 178px;
+//     display: block;
+//   }
 </style>

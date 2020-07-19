@@ -1,28 +1,25 @@
 <template>
    <div id="show-blogs">
     <blog-header />
-    <article v-if="this.$route.path == '/article'">
-      <div v-for="blog in blogs" :key="blog.index" id="single-blog">
+    <article id="list" v-if="this.$route.path == '/article'">
+      <ol v-for="blog in blogs" :key="blog.index" id="single-blog" >
         <router-link :to="'/article/' + blog.id">
           <h3 class="title">{{blog.title}}</h3>
         </router-link>
         <!-- <h3>{{blog.content}}</h3> -->
-      </div>
-      <el-pagination 
-        background 
-        :total= 10*totalCount
-        :jumper= "1" 
-        :page-count= "totalCount"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :page-sizes="[10]"
-        layout="total, sizes, prev, pager, next, jumper"
-        >
-      </el-pagination>
+      </ol>
     </article>
-    <section>
-      <router-view></router-view>
-    </section>
+    <router-view></router-view>
+    <el-pagination
+      v-if="this.$route.path == '/article'"
+      background
+      :total= 10*totalCount
+      :jumper= "1" 
+      :page-count= "totalCount"
+      @current-change="handleCurrentChange"
+      layout="total, prev, pager, next, jumper"
+      >
+    </el-pagination>
     <blog-footer />
   </div>
 </template>
@@ -34,21 +31,21 @@ export default {
   components: {},
   data() {
     return {
-      // blogs: [],
-      blogs: [
-        {title: 'PYTHON ENHANCEMENT PROPOSALS'},
-        {title: '聊一聊多CPU，多核，多进程，多线程'},
-        {title: 'PYTHON 沙箱逃逸总结一下'},
-        {title: 'PYTHON ENHANCEMENT PROPOSALS'},
-        {title: '聊一聊多CPU，多核，多进程，多线程fghfghdyutyjtujutjutjvh'},
-        {title: 'PYTHON 沙箱逃逸总结一下'},
-        {title: 'PYTHON ENHANCEMENT PROPOSALS'},
-        {title: '聊一聊多CPU，多核，多进程，多线程'},
-        {title: 'PYTHON 沙箱逃逸总结一下'},
-        {title: 'PYTHON ENHANCEMENT PROPOSALS'},
-        {title: '聊一聊多CPU，多核，多进程，多线程'},
-        {title: 'PYTHON 沙箱逃逸总结一下'},
-      ],
+      blogs: [],
+      // blogs: [
+      //   {title: 'PYTHON ENHANCEMENT PROPOSALS'},
+      //   {title: '聊一聊多CPU，多核，多进程，多线程'},
+      //   {title: 'PYTHON 沙箱逃逸总结一下'},
+      //   {title: 'PYTHON ENHANCEMENT PROPOSALS'},
+      //   {title: '聊一聊多CPU，多核，多进程，多线程fghfghdyutyjtujutjutjvh'},
+      //   {title: 'PYTHON 沙箱逃逸总结一下'},
+      //   {title: 'PYTHON ENHANCEMENT PROPOSALS'},
+      //   {title: '聊一聊多CPU，多核，多进程，多线程'},
+      //   {title: 'PYTHON 沙箱逃逸总结一下'},
+      //   {title: 'PYTHON ENHANCEMENT PROPOSALS'},
+      //   {title: '聊一聊多CPU，多核，多进程，多线程'},
+      //   {title: 'PYTHON 沙箱逃逸总结一下'},
+      // ],
       totalCount: null,
       currentPage: null,
       page: {
@@ -70,12 +67,12 @@ export default {
       this.page.pageSize = val
     }
   },
-  // created() {
-  //   Bloglist(1).then(data => {
-  //     this.blogs = data.data.articleList;
-  //     this.totalCount =  data.data.totalCount;
-  //   });
-  // }
+  beforeCreate() {
+    Bloglist(1).then(data => {
+      this.blogs = data.data.articleList;
+      this.totalCount =  data.data.totalCount;
+    });
+  }
 };
 </script>
 
@@ -83,6 +80,10 @@ export default {
 body {
   font-family: Lucida Sans Unicode, Verdana, "Hiragino Sans GB", -apple-system,
     Microsoft Yahei, sans-serif;
+}
+ol{
+  padding: 0;
+  margin: 0;
 }
 h3{
   font-family: 'zashu';
@@ -92,11 +93,15 @@ a:hover{
   text-decoration: underline;
 }
 a:active{
-  color:#ba2636;
+  color:#644545;
 }
 li {
   display: inline-block;
   list-style: none;
+}
+#list{
+  display: block;
+  height: 450px;
 }
 #show-blogs {
   width: 720px;

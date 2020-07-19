@@ -1,5 +1,5 @@
 import { Login, logout, GetCode } from '@/api/login'
-import { getToken, getUserName, setUserName, setToken, removeToken } from '@/utils/user'
+import { getToken, setToken, removeToken } from '@/utils/user'
 // import router, { resetRouter } from '@/router'
 
 const state = {
@@ -15,28 +15,26 @@ const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token //把data.token传给state.token，改变state.token值。
   },
-  SET_INTRODUCTION: (state, introduction) => {
-    state.introduction = introduction
-  },
-  SET_NAME: (state, name) => {
-    state.name = name
-  },
-  SET_AVATAR: (state, avatar) => {
-    state.avatar = avatar
-  },
-  SET_ROLES: (state, roles) => {
-    state.roles = roles
-  }
+  // SET_INTRODUCTION: (state, introduction) => {
+  //   state.introduction = introduction
+  // },
+  // SET_NAME: (state, name) => {
+  //   state.name = name
+  // },
+  // SET_AVATAR: (state, avatar) => {
+  //   state.avatar = avatar
+  // },
+  // SET_ROLES: (state, roles) => {
+  //   state.roles = roles
+  // }
 }
 
 const actions = {  // 可以回调处理事情 
   login({ commit }, loginForm) {
     return new Promise((resolve, reject) => {
       Login(loginForm).then(response => {
-        commit('SET_TOKEN', response.token)
-        // commit('SET_NAME', data.username);
-        setToken('data1.data.token')
-        // setUserName(data.username);
+        commit('SET_TOKEN', response.data.token)
+        setToken(response.data.token)
         resolve(response)
       }).catch(error => {
         reject(error)
@@ -49,6 +47,9 @@ const actions = {  // 可以回调处理事情
       commit('SET_TOKEN','')
       removeToken()
       resolve()
+    }).catch(error => {
+      reject(error)
+      console.log(error)
     })
   }
 

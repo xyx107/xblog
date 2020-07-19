@@ -30,7 +30,6 @@
           ></el-input>
         </el-form-item>
        
-
         <el-form-item class="foot">
           <el-row :gutter="60">
               <el-col :span="12">
@@ -67,8 +66,8 @@ export default {
             marginTop: "0",
           },
       loginForm:{
-        username: 'archerx',
-        password: 'archerx',
+        username: 'xyx107',
+        password: 'aaaaaaa',
         code: ''
       },
       logRules:{
@@ -83,13 +82,13 @@ export default {
     }
   },
   methods: {
-    getCode() {
-      this.$store.dispatch('user/getCode')
-          this.$router.push({
-          name: 'register'
-          })
-    },
-      resetLoginForm() {
+    // getCode() {
+    //   this.$store.dispatch('user/getCode')
+    //       this.$router.push({
+    //       name: 'register'
+    //       })
+    // },
+    resetLoginForm() {
       // console.log(this.$refs)
       this.$refs.loginFormRef.resetFields();
     },
@@ -98,9 +97,13 @@ export default {
         if (valid){
           this.$store.dispatch('user/login', this.loginForm)
           .then( () => {
-          this.$router.push({
-            name: 'article'
-            })
+            if(this.$route.query.required == location.hostname) {
+              this.$ruter.go(-1)
+            } else {
+              this.$router.push({
+                name: 'article'
+              })
+            }
           }).catch(error => {});  
         }else {
           return false;

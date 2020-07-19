@@ -1,27 +1,41 @@
 <template>
   <div id="friend">
         <h1>友链</h1>
-        <section id="classifyTotal">
-          
-        </section>
          <section id="list">
            <ul>
              <li>
-               <img src="https://avatars0.githubusercontent.com/u/34017352?s=400&amp;u=a06f4ca3cebd399527f469c9ce1c9d5486b0a406&amp;v=4" alt="friend" title="friend">
-               <a href="https://blog.ixuchao.cn/">Archerx's Blog</a>
+                <a href="https://blog.ixuchao.cn/">
+                    <img src="https://avatars0.githubusercontent.com/u/34017352?s=400&amp;u=a06f4ca3cebd399527f469c9ce1c9d5486b0a406&amp;v=4" alt="friend" title="friend">
+                    <i class="el-icon-d-arrow-right"></i>
+                    Archerx's Blog</a>
              </li>
              <li>
-               <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend">
-               <a href="https://binarysec.top/">Kaka's Blog</a>
+                 <a href="https://binarysec.top/">
+                    <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend">
+                    <i class="el-icon-d-arrow-right"></i>
+                    Kaka's Blog</a>
              </li>
              <li>
-               <img src="https://gravatar.o0o.fun/avatar/8e201d522dd72c93de9c489567f62046?s=101&amp;r=X&amp;d=mm" alt="friend" title="friend">
-               <a href="https://lushan.me/">lushan: 安卓逆向大佬.</a>
+                 <a href="https://lushan.me/">
+                    <img src="https://gravatar.o0o.fun/avatar/8e201d522dd72c93de9c489567f62046?s=101&amp;r=X&amp;d=mm" alt="friend" title="friend">
+                    <i class="el-icon-d-arrow-right"></i>
+                    lushan: 安卓逆向大佬.</a>
+             </li>
+             <li>
+                 <a href="https://me.csdn.net/qq_41079177">
+                    <img src="https://gravatar.o0o.fun/avatar/8e201d522dd72c93de9c489567f62046?s=101&amp;r=X&amp;d=mm" alt="friend" title="friend">
+                    <i class="el-icon-d-arrow-right"></i>
+                    神林丶.</a>
+             </li>
+             <li>
+                <a href="https://me.csdn.net/qq_42196196">
+                    <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend">
+                    <i class="el-icon-d-arrow-right"></i>
+                    诸神之眼</a>
              </li>
            </ul>
         </section>
         <baidu-map
-            
             id="baidumap"
             class="baidumap">          
         </baidu-map>
@@ -51,47 +65,47 @@ export default {
         },
         {
             name: '北京',
-            value: 54
+            value: 5
         },
         {
             name: '天津',
-            value: 13
+            value: 1
         },
         {
             name: '上海',
-            value: 40
+            value: 4
         },
         {
             name: '重庆',
-            value: 75
+            value: 0
         },
         {
             name: '河北',
-            value: 13
+            value: 0
         },
         {
             name: '河南',
-            value: 83
+            value: 0
         },
         {
             name: '云南',
-            value: 11
+            value: 0
         },
         {
             name: '辽宁',
-            value: 19
+            value: 1
         },
         {
             name: '黑龙江',
-            value: 15
+            value: 0
         },
         {
             name: '湖南',
-            value: 69
+            value: 0
         },
         {
             name: '安徽',
-            value: 60
+            value: 0
         },
         {
             name: '山东',
@@ -99,63 +113,63 @@ export default {
         },
         {
             name: '新疆',
-            value: 4
+            value: 0
         },
         {
             name: '江苏',
-            value: 31
+            value: 0
         },
         {
             name: '浙江',
-            value: 104
+            value: 2
         },
         {
             name: '江西',
-            value: 36
+            value: 0
         },
         {
             name: '湖北',
-            value: 1052
+            value: 0
         },
         {
             name: '广西',
-            value: 33
+            value: 0
         },
         {
             name: '甘肃',
-            value: 7
+            value: 0
         },
         {
             name: '山西',
-            value: 9
+            value: 0
         },
         {
             name: '内蒙古',
-            value: 7
+            value: 0
         },
         {
             name: '陕西',
-            value: 22
+            value: 0
         },
         {
             name: '吉林',
-            value: 4
+            value: 0
         },
         {
             name: '福建',
-            value: 18
+            value: 0
         },
         {
             name: '贵州',
-            value: 5
+            value: 0
         },
         {
             name: '广东',
-            value: 98
+            value: 1
         },
         {
             name: '青海',
-            value: 1
+            value: 0
         },
         {
             name: '西藏',
@@ -163,27 +177,27 @@ export default {
         },
         {
             name: '四川',
-            value: 44
+            value: 0
         },
         {
             name: '宁夏',
-            value: 4
+            value: 0
         },
         {
             name: '海南',
-            value: 22
+            value: 0
         },
         {
             name: '台湾',
-            value: 3
+            value: 0
         },
         {
             name: '香港',
-            value: 5
+            value: 0
         },
         {
             name: '澳门',
-            value: 5
+            value: 0
         }
     ];
     option = {
@@ -191,21 +205,17 @@ export default {
             //点击显示tip
             // triggerOn: "click",
             // formatter: function(e, t, n) {
-            //     return .5 == e.value ? e.name + "：有疑似病例" : e.seriesName + "<br />" + e.name + "：" + e.value
+            //     return .5 == e.value ? e.name + "：" : e.seriesName + "<br />" + e.name + "：" + e.value
             // }
         },
         visualMap: {
             min: 0,
             max: 1000,
-            left: 26,
-            bottom: 40,
+            left: 2,
+            top: 20,
             showLabel: !0,
-            text: ["高", "低"],
+            // text: ["高", "低"],
             pieces: [{
-                gt: 100,
-                label: "> 100 人",
-                color: "#7f1100"
-            }, {
                 gte: 10,
                 lte: 100,
                 label: "10 - 100 人",
@@ -215,11 +225,6 @@ export default {
                 lt: 10,
                 label: "1 - 9 人",
                 color: "#ff8c71"
-            }, {
-                gt: 0,
-                lt: 1,
-                label: "疑似",
-                color: "#ffd768"
             }, {
                 value: 0,
                 color: "#ffffff"
@@ -234,23 +239,23 @@ export default {
                 max: 2
             },
             zoom: 1,
-            top: 120,
+            top: 20,
             label: {
                 normal: {
                     show: !0,
                     fontSize: "14",
-                    color: "rgba(0,0,0,0.7)"
+                    color: "rgba(0,0,0,0.5)"
                 }
             },
             itemStyle: {
                 normal: {
-                    //shadowBlur: 50,
-                    //shadowColor: 'rgba(0, 0, 0, 0.2)',
+                    // shadowBlur: 50,
+                    // shadowColor: 'rgba(0, 0, 0, 0.2)',
                     areaColor: "rgba(20, 41, 87, 0.5)",//地图省份颜色
-                    borderColor: "rgba(0, 0, 0, 0.2)"
+                    borderColor: "rgba(0, 0, 0, 0.1)"
                 },
                 emphasis: {
-                    areaColor: "rgba(20, 41, 87, 0.5)",
+                    areaColor: "yellow",
                     shadowOffsetX: 0,
                     shadowOffsetY: 0,
                     borderWidth: 0
@@ -258,7 +263,7 @@ export default {
             }
         },
         series: [{
-            name: "确诊病例",
+            name: "地区分布",
             type: "map",
             geoIndex: 0,
             data: window.dataList
@@ -274,18 +279,31 @@ export default {
 }
 </script>
 
-<style scoped>
-.baidumap{
-  width: 500px;
-  height: 400px;
-}
+<style lang="scss" scoped>
+h2{
+    margin: 0;
+  }
 #friend{
   width: 100%;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  margin: 0 ;
-  padding: 20px
+  margin: 0;
+  padding: 20px;
+  
+}
+#list ul{
+  padding-left: 0;
+}
+li{
+  list-style: none;
+  margin-top: 5px;
+  a{
+      color: #333;
+  }
+  a:hover{
+      text-decoration: underline;
+  }
 }
 img[alt=friend] {
     height: 40px;
@@ -298,14 +316,15 @@ img[alt=friend] {
   display: flex;
   flex-direction: column;
 }
-li{
-  list-style: none;
-  margin-top: 5px;
-}
+
 #classifyTotal ul {
   padding-left: 20px; 
 }
-#list ul{
-  padding-left: 0;
+
+.baidumap{
+    background-color: rgba(239, 240, 245, 0.5);
+    margin: 0 auto;
+  width: 500px;
+  height: 400px;
 }
 </style>
