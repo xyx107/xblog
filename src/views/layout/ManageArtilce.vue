@@ -53,7 +53,7 @@
         </el-table-column>
       </el-table>
     </el-scrollbar>
-      <el-button @click="deleteArr()">删除选中项</el-button>
+      <el-button id="delbtn" type="primary" @click="deleteArr()">删除选中项</el-button>
     </main>
   </div>
 </template>
@@ -77,42 +77,12 @@ export default {
         readNum: 1,
         comments: 2,
         zanNum: 3,
-        id: 4
+        id: 2
       },{
         readNum: 1,
         comments: 2,
         zanNum: 3,
-        id: 4
-      },{
-        readNum: 1,
-        comments: 2,
-        zanNum: 3,
-        id: 4
-      },{
-        readNum: 1,
-        comments: 2,
-        zanNum: 3,
-        id: 4
-      },{
-        readNum: 1,
-        comments: 2,
-        zanNum: 3,
-        id: 4
-      },{
-        readNum: 1,
-        comments: 2,
-        zanNum: 3,
-        id: 4
-      },{
-        readNum: 1,
-        comments: 2,
-        zanNum: 3,
-        id: 4
-      },{
-        readNum: 1,
-        comments: 2,
-        zanNum: 3,
-        id: 4
+        id: 1
       }],
       id: 1,
       loading: true,
@@ -153,6 +123,7 @@ export default {
     handleReserve (row) {
         return row.id
       },
+    
     deleteOne(index, row) {
         this.$confirm('此操作将永久删除选中文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
@@ -246,5 +217,8 @@ main {
 }
 .option {
   width: 150px;
+}
+#delbtn{
+  margin-top: 15px;
 }
 </style>

@@ -117,19 +117,19 @@ export default {
               ]
             }
             myChart.on('click',function(params){
-            option.geo.map =  '北京'
-            myChart.setOption(option, true);
-})
-    },
+                option.geo.map =  '北京'
+                myChart.setOption(option, true);
+            })
+     },
   }
 }
 </script>
 
 <style>
-.baidumap{
+/* .baidumap{
   width: 600px;
   height: 500px;
-}
+} */
 #about{
   width: 100%;
   display: flex;

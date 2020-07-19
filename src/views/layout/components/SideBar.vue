@@ -2,10 +2,10 @@
   <div>
     <el-container>
       <el-scrollbar style=" height: 100%; ">
-        <el-aside width="200px" style="height: 100%;">
-          <el-menu :default-openeds="['1', '3']" >
+        <el-aside width="201px" style="height: 100%">
+          <el-menu class="el-menu-vertical-demo" :collapse="isCollapse"  active-text-color="#ffd04b">
             <el-menu-item-group>
-              <el-menu-item index="0-1"><router-link to="main">概要</router-link></el-menu-item>
+              <el-menu-item index="0-1"><router-link to="main">后台首页</router-link></el-menu-item>
             </el-menu-item-group>
             <el-submenu index="1">
               <template slot="title">
@@ -38,8 +38,8 @@
                 <i class="el-icon-setting"></i>用户管理
               </template>
               <el-menu-item-group>
-                <el-menu-item index="3-1"><router-link to="user">用户管理</router-link></el-menu-item>
-                <el-menu-item index="3-2">修改权限</el-menu-item>
+                <el-menu-item index="4-1"><router-link to="user">用户管理</router-link></el-menu-item>
+                <el-menu-item index="4-2">修改权限</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="5">
@@ -47,8 +47,8 @@
                 <i class="el-icon-setting"></i>标签管理
               </template>
               <el-menu-item-group>
-                <el-menu-item index="4-1">删除标签</el-menu-item>
-                <el-menu-item index="4-2">添加标签</el-menu-item>
+                <el-menu-item index="5-1">删除标签</el-menu-item>
+                <el-menu-item index="5-2">添加标签</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
           </el-menu>
@@ -65,7 +65,7 @@
             </el-dropdown-menu>
           </el-dropdown>  
         </el-header>
-        <el-breadcrumb separator="/">
+        <el-breadcrumb separator="/" >
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
           <el-breadcrumb-item>活动列表</el-breadcrumb-item>
@@ -86,20 +86,29 @@ export default {
   name: "",
   components: {},
   data() {
-    return {};
+    return {
+      isCollapse: false
+    };
   },
-  logout() {
+  methods: {
+    logout() {
       this.$store.dispatch('user/logout')
-      .then(() => {
-        this.$router.push({
-          name: 'login'
-        })
-      })
     }
+  }
 };
 </script>
 
 <style >
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+  }
+.el-header{
+  border-bottom: 1px solid #eee;
+}
+
+a:visited{
+    color:#333;
+}
 .el-container{
   height: calc(100vh);
   border: 1px solid rgb(230, 207, 207);
@@ -117,7 +126,7 @@ export default {
 .el-main {
   height: calc(100vh - 1200px);
   padding: 20px 0 0 20px; 
-  background-color: #eee;
+  background-image: linear-gradient(to bottom right, #ccffcc, #ffccff);
 }
 .el-breadcrumb{
   line-height: 60px;

@@ -4,7 +4,7 @@
       <h1 id="user">Archerx's Blog</h1>
       <p class="description" v-cloak>{{msg}}</p>
       <nav id="navbar">
-        <article v-if="this.$route.path == '/article'">
+        <article>
           <ul class="list" :router="true">
             <section><router-link to="article">首页</router-link></section>
             <section><router-link to="messageboard">留言</router-link></section>

@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@packy-tang/vue-tinymce": "^1.1.0",
     "ali-oss": "^6.10.0",
     "animate.css": "^4.0.0",
     "axios": "^0.19.2",
@@ -21,6 +22,7 @@
     "sass": "^1.26.2",
     "sass-loader": "^7.3.1",
     "showdown": "^1.9.1",
+    "tinymce": "^5.4.1",
     "vue": "^2.5.2",
     "vue-baidu-map": "^0.21.22",
     "vue-meditor": "^2.1.1",

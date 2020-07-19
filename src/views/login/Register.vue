@@ -55,7 +55,7 @@
     </section>
   </div>
 </template>
-
+ 
 <script>
 import { Register, GetCode} from '@/api/login'
 import { Message } from 'element-ui';
@@ -179,7 +179,7 @@ export default {
   }
 }
 </script>
-
+ 
 <style scoped>
 #main{
   height: 100%;
@@ -187,12 +187,12 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
-
+ 
 h2{
   font-family: 'Adele';
   font-size: 50px;
 }
-
+ 
 #main-form {
   height: 380px;
   width: 480px;
@@ -205,7 +205,7 @@ h2{
   justify-content: center;
   align-items: center;
 }
-
+ 
 .subbtn {
   width: 200px;
 }

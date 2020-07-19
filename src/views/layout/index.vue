@@ -1,9 +1,9 @@
 <template>
   <div >
       <sider-bar/>
-      <manage-header/>
+      <!-- <manage-header/> -->
       <Main/>
-      <manage-footer/>
+      <!-- <manage-footer/> -->
   </div>
 </template>
 
