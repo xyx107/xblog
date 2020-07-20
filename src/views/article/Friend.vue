@@ -5,7 +5,7 @@
            <ul>
              <li>
                 <a href="https://blog.ixuchao.cn/">
-                    <img src="https://avatars0.githubusercontent.com/u/34017352?s=400&amp;u=a06f4ca3cebd399527f469c9ce1c9d5486b0a406&amp;v=4" alt="friend" title="friend">
+                    <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend">
                     <i class="el-icon-d-arrow-right"></i>
                     Archerx's Blog</a>
              </li>

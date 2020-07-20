@@ -1,10 +1,28 @@
 <template>
   <div id="blog-body">
-    <div id="title">
-        <el-input type="text" v-model="title" placeholder="请输入文章标题"></el-input>
-    </div>
-    <vue-tinymce v-model="content" :setting="setting" />
-    <el-button type="primary" @click.prevent="addBlog()">发表文章</el-button>
+    <el-form :model="formInline" class="blog-form" size="mini">
+      <el-form-item label="请输入文章标题" id="title">
+        <el-input type="text" v-model="title"></el-input>
+      </el-form-item>
+      <el-form-item >
+        <el-select v-model="tag" placeholder="请输入文章分类">
+          <el-option label="前端" value="前端"></el-option>
+          <el-option label="后端" value="后端"></el-option>
+          <el-option label="随笔" value="随笔"></el-option>
+        </el-select>
+        <el-select v-model="comment" placeholder="请输入文章标签">
+          <el-option label="vue" value="vue"></el-option>
+          <el-option label="nodejs" value="nodejs"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item>
+        <vue-tinymce v-model="content" :setting="setting" class="tinym"/>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click.prevent="addBlog()">发表文章</el-button>
+        <el-button type="primary" @click.prevent="">保存文章</el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -32,16 +50,17 @@ export default {
   data(){
     return {
       title: '',
-      tag: 'aaa',
+      tag: '',
+      comment: '',
       content: '',
       setting: {
         menubar: false,
-        toolbar: "undo redo | fullscreen | formatselect alignleft aligncenter alignright alignjustify | link unlink | numlist bullist | image media table | fontselect fontsizeselect forecolor backcolor | bold italic underline strikethrough | indent outdent | superscript subscript | removeformat |",
+        toolbar: "undo redo | formatselect alignleft aligncenter alignright alignjustify | link unlink | numlist bullist | image media table | fontselect fontsizeselect forecolor backcolor | bold italic underline strikethrough | indent outdent | superscript subscript | removeformat |",
         toolbar_drawer: "sliding",
         quickbars_selection_toolbar: "removeformat | bold italic underline strikethrough | fontsizeselect forecolor backcolor",
         plugins: "link image media table lists fullscreen quickbars",
         language: 'zh_CN',
-        height: 700
+        height: 300
       }
     }
   },
@@ -50,6 +69,7 @@ export default {
         const blog = {
             title: this.title,
             content: this.content,
+            comment: this.comment,
             tag: this.tag
         }
         Addblog(blog)
@@ -63,14 +83,22 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+#blog-body{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 20px;
   #title{
-    display: flex;
+    font-family: 'zashu';
   }
-  #blog-body{
-    width: 80%;
-    overflow: hidden;
-    margin: 0 auto;
-    padding-top: 10%;
+  .tinym{
+    margin: 0;
+    padding: 0;
   }
+}
 </style>

@@ -8,7 +8,7 @@ import Login from "@/views/login/Login";
 import Forgetpw from "@/views/login/Forgetpw";
 import Register from "@/views/login/Register";
 
-import MdEdit from "../views/layout/MdEdit";
+import MdEdit from "../views/layout/EditBlog";
 // import AddBlog from '../views/layout/AddBlog'
 
 import "@/views/layout/index";
@@ -37,11 +37,6 @@ const router = new Router({
       component: Forgetpw
     },
     {
-      path: "/mdedit",
-      name: "mdedit",
-      component: MdEdit
-    },
-    {
       path: "/article",
       name: "article",
       component: () => import("@/views/article/"),
@@ -61,6 +56,11 @@ const router = new Router({
       path: "/addblog",
       name: "addblog",
       component: () => import('@/views/layout/AddBlog')
+    },
+    {
+      path: "/mdedit/:id",
+      name: "mdedit",
+      component: MdEdit
     },
     {
       path: "/admin",

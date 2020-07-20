@@ -102,7 +102,7 @@ export default {
         // this.index = index
         // this.msg = row.id
         this.$router.push({
-          path: '/mdedit',
+          path: `/mdedit/${row.id}`,
           parmas: {
             id: row.id
           }

@@ -14,7 +14,9 @@ import './assets/iconfont/iconfont.css'
 import "@/utils/component.js"
 
 import VueShowdown from 'vue-showdown'
-import Markdown from 'vue-meditor'
+// import Markdown from 'vue-meditor'
+// import Simplemde from 'simplemde'
+// Vue.use(Simplemde)
 
 import echarts from 'echarts'
 import 'echarts/lib/chart/line'

@@ -20,19 +20,20 @@
     </ul>
     <section id="content" >
       <el-scrollbar style=" height: 100%; ">
-        <div v-html="blog.content"> {{blog.content}}</div>
+        <div v-html="blog.content"></div>
+        <!-- <div v-html="blog.content"> {{blog.content}}</div> -->
       </el-scrollbar>
     </section>
     <section>
-        <el-form id="messageForm" :model="messageForm" ref="messageFormRef" :rules="messageRules">
+        <el-form id="messageForm" :model="comments" ref="messageFormRef" :rules="messageRules">
           <el-form-item>
-            <el-input placeholder="恁叫哈~" v-model="comment.name"></el-input>
+            <el-input placeholder="恁叫哈~" v-model="comments.name"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input placeholder="恁邮箱是哈~" v-model="comment.email"></el-input>
+            <el-input placeholder="恁邮箱是哈~" v-model="comments.email"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input placeholder="恁想说哈~" v-model="comment.content"></el-input>
+            <el-input placeholder="恁想说哈~" v-model="comments.content"></el-input>
           </el-form-item>
           <el-form-item>
             <img src="https://blog.ixuchao.cn/usr/themes/Plain-master/images/commentsbg.gif" alt="blackcat">
@@ -75,22 +76,23 @@ export default {
   components: {},
   data() {
     return {
-        msg: 'fgukf dsylgtdh',
-        // blog: {},
-        blog: {
-          title: 'Python Enhancement Proposals',
-          content: '中文一般叫做python增强提案，简称PEP，多看看发现能了解到更多关于python的特性，为什么要设计这些特性，如何实现，或者怎样更好的运用甚至了解一些细分最佳实践，极力推荐。'
-        },
+        blog: {},
         id: this.$route.params.id,
         imageUrl: '',
-        dialogFormVisible: false,
+        // dialogFormVisible: false,
         formLabelWidth: '20%',
         notrobot: false,
-        comment: {
+        comments: {
+          parentId: 1,
+          aticleId: this.id,
           email: '',
-          name: 'ghf ',
+          name: '',
           content: '',
-          parentId: '',
+        },
+        messageRules: {
+          username: [
+            {required: true, message: "请输入用户名", trigger: "blur"}
+          ],
         }
     }
   },
@@ -99,70 +101,66 @@ export default {
       console.log(this.blog.zanNum)
     },
     consol(){
-      SubmitComment(this.blog.zanNum)
-      this.$refs.loginFormRef.validate( valid => {
+      this.$refs.messageFormRef.validate( valid => {
         if (valid){
-          this.$store.dispatch('user/login', this.loginForm)
+          SubmitComment(this.comments)
           .then( () => {
-            if(this.$route.query.required == location.hostname) {
-              this.$ruter.go(-1)
-            } else {
-              this.$router.push({
-                name: 'article'
-              })
-            }
-          }).catch(error => {});  
+            console.log(1111)
+          }).catch(error => {
+            // console.log(error)
+          });  
         }else {
           return false;
         }
       })
-      console.log(this.blog.zanNum)
     },
-    submitComment() {
-      const comment =  {
-        // name: this.comment.name,
-        content: this.comment.content,
-        // parentId: this.comment.parentId,
-         parentId: 3,
-        aticleId: this.id
-      }
-      SubmitComment(comment).then( res => {
-        console.log(111)
-      })
-    },
-    handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
-      },
-    beforeAvatarUpload (file) {
-        const isLt2M = file.size / 1024 / 1024 < 2
-        if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!')
-        }
-        return isLt2M
-      },
-      upload (item) {
-        getAliOSSCreds().then(res => { // 向后台发请求 拉取OSS相关配置
-          let creds = res.body.data
-          let client = new OSS.Wrapper({
-            region: 'oss-cn-beijing', // 服务器集群地区
-            accessKeyId: creds.accessKeyId, // OSS帐号
-            accessKeySecret: creds.accessKeySecret, // OSS 密码
-            stsToken: creds.securityToken, // 签名token
-            bucket: 'imgXXXX' // 阿里云上存储的 Bucket
-          })
-          let key = 'resource/' + localStorage.userId + '/images/' + createId() + '.jpg'  // 存储路径，并且给图片改成唯一名字
-          return client.put(key, item.file) // OSS上传
-        }).then(res => {
-          console.log(res.url)
-          this.$emit('on-success', res.url) // 返回图片的存储路径
-        }).catch(err => {
-          console.log(err)
-        })
-      }
+    // submitComment() {
+    //   const comment =  {
+    //     // name: this.comment.name,
+    //     content: this.comment.content,
+    //     // parentId: this.comment.parentId,
+    //      parentId: 3,
+    //     aticleId: this.id
+    //   }
+    //   SubmitComment(comment).then( res => {
+    //     console.log(111)
+    //   })
+    // },
+
+    // handleAvatarSuccess(res, file) {
+    //     this.imageUrl = URL.createObjectURL(file.raw);
+    //   },
+    // beforeAvatarUpload (file) {
+    //     const isLt2M = file.size / 1024 / 1024 < 2
+    //     if (!isLt2M) {
+    //       this.$message.error('上传头像图片大小不能超过 2MB!')
+    //     }
+    //     return isLt2M
+    //   },
+    //   upload (item) {
+    //     getAliOSSCreds().then(res => { // 向后台发请求 拉取OSS相关配置
+    //       let creds = res.body.data
+    //       let client = new OSS.Wrapper({
+    //         region: 'oss-cn-beijing', // 服务器集群地区
+    //         accessKeyId: creds.accessKeyId, // OSS帐号
+    //         accessKeySecret: creds.accessKeySecret, // OSS 密码
+    //         stsToken: creds.securityToken, // 签名token
+    //         bucket: 'imgXXXX' // 阿里云上存储的 Bucket
+    //       })
+    //       let key = 'resource/' + localStorage.userId + '/images/' + createId() + '.jpg'  // 存储路径，并且给图片改成唯一名字
+    //       return client.put(key, item.file) // OSS上传
+    //     }).then(res => {
+    //       console.log(res.url)
+    //       this.$emit('on-success', res.url) // 返回图片的存储路径
+    //     }).catch(err => {
+    //       console.log(err)
+    //     })
+    //   }
   },
   created() {
     Singleblog(this.id).then( data => {
           this.blog = data.data;
+          console.log(this.blog)
           let timeRegex = /(.*)T(.{8})/;
       this.blog.createAt = this.blog.createAt.slice(0,19).split('-').join('/').replace(timeRegex,"$2 $1")
       })

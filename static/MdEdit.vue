@@ -61,13 +61,6 @@ export default {
     }
   },
   methods:{
-      addBlog() {
-          Addblog(this.blog).then( Response => {
-              this.$message.success('添加成功')
-          }).catch(error => {
-              this.$message.error()
-          })
-      },
       editBlog() {
           const data = {
                title: this.blog.title,
