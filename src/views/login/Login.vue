@@ -126,7 +126,7 @@ export default {
 
 <style  scoped>
 #main {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

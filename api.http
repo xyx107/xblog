@@ -1,5 +1,5 @@
 @url = "http://39.106.169.248:8080"
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTQ4NzA4NzEsImlkIjoyLCJuYmYiOjE1OTQ4NzA4NzEsInVzZXJuYW1lIjoiYXJjaGVyeCJ9.daIrS2tlQSa1DGfMd8Qm61G89KvtFJ4ABRh2TTK1CVw
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTUyNTUzMjQsImlkIjoxLCJuYmYiOjE1OTUyNTUzMjQsInVzZXJuYW1lIjoieHl4MTA3In0.4U2xI-2oa93Vox07lE20lz13sQJJbJgpJ08LIt8p3lw
 Authorization: yxy {{token}}
 Content-Type: application/json
 
@@ -71,6 +71,11 @@ Content-Type: application/json
 Authorization: yxy {{token}}
 
 {
-    "title": "如何吃饭3",
-    "content": "  如何吃饭的发生，到底需要如何做到，不如何吃饭的发生，又会如何产生。 要想清楚，如何吃饭，到底是一种怎么样的存在。 而这些并不是完全重要，不得不考虑它出现了的事实。 生活中，若如何吃饭出现了，我们就不得不考虑它出现了的事实。 那么， 叔本华曾经提到过，意志是一个强壮的盲人，倚靠在明眼的跛子肩上。这不禁令我深思。"
+    "title": "1",
+    "content": "1"
 }
+
+###
+GET  http://127.0.0.1:8080/article/
+Content-Type: application/json
+Authorization: yxy {{token}}

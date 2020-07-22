@@ -12,8 +12,8 @@
                 <i class="el-icon-message"></i>文章管理
               </template>
               <el-menu-item-group>
-                <el-menu-item index="1-1"><router-link to="addblog">新增文章</router-link></el-menu-item>
-                <el-menu-item index="1-2"><router-link to="manageartilce">文章管理</router-link></el-menu-item>
+                <el-menu-item index="1-1"><router-link to="manageartilce">文章管理</router-link></el-menu-item>
+                <el-menu-item index="1-2"><router-link to="addblog">新增文章</router-link></el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="2">
@@ -65,12 +65,12 @@
             </el-dropdown-menu>
           </el-dropdown>  
         </el-header>
-        <el-breadcrumb separator="/" >
+        <!-- <el-breadcrumb separator="/" >
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
           <el-breadcrumb-item>活动列表</el-breadcrumb-item>
           <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-        </el-breadcrumb>
+        </el-breadcrumb> -->
         <el-main>
         <el-scrollbar style="height: 100%;">
           <router-view></router-view>
@@ -105,7 +105,9 @@ export default {
 .el-header{
   border-bottom: 1px solid #eee;
 }
-
+a{
+  color: #666;
+}
 a:visited{
     color:#333;
 }

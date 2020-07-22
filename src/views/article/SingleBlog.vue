@@ -224,13 +224,13 @@ ul{
 }
 #content{
   border: 2px solid #eee;
-  height: 600px;
+  height: 400px;
 }
 .el-scrollbar__wrap{ 
   overflow-x: hidden;
 }
 #messageForm{
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   .el-form-item{

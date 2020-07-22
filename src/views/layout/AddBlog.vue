@@ -19,10 +19,11 @@
         <vue-tinymce v-model="content" :setting="setting" class="tinym"/>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click.prevent="addBlog()">发表文章</el-button>
-        <el-button type="primary" @click.prevent="">保存文章</el-button>
-      </el-form-item>
+      <el-button type="primary" @click.prevent="addBlog()">发表文章</el-button>
+      <el-button type="primary" @click.prevent="">保存文章</el-button>
+    </el-form-item>
     </el-form>
+    
   </div>
 </template>
 
@@ -98,7 +99,6 @@ export default {
   }
   .tinym{
     margin: 0;
-    padding: 0;
   }
 }
 </style>

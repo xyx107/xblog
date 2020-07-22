@@ -194,7 +194,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 body .el-scrollbar__wrap {
     overflow-x: hidden;
 }

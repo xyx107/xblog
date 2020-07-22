@@ -6,7 +6,7 @@
         <div>
           <h4>欢迎注册|已有账号？
             <router-link to="/login">
-              <el-link type="primary">登陆 |</el-link>
+              <el-link type="primary">登陆</el-link>
             </router-link>
           </h4>
         </div>
@@ -182,7 +182,7 @@ export default {
  
 <style scoped>
 #main{
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: space-around;
   align-items: center;

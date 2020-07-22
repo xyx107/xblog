@@ -15,7 +15,7 @@
             </template>
           </el-table-column>
           <el-table-column prop="child" label="子分类" ></el-table-column>
-          <el-table-column prop="option" width="100" label="操作">
+          <el-table-column prop="option" width="300" label="操作">
             <template slot-scope="scope">
               <el-button
                 size="mini"
@@ -24,7 +24,6 @@
               </el-button>
               <el-button
                 size="mini"
-                type="primary"
                 @click="handleUpdate(scope.$index, scope.row)">编辑
               </el-button>
               <el-button
