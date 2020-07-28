@@ -9,14 +9,18 @@ function resolve (dir) {
 }
 
 
-
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js'
   },
   externals: {
-
+    // 'vue-router': 'VueRouter',
+    // 'vue': 'Vue',
+    // 'vuex': 'Vuex',
+    'echarts': 'echarts',
+    'axios':'axios',
+    // 'element-ui': 'element' 
   },
   output: {
     path: config.build.assetsRoot,

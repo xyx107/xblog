@@ -1,5 +1,5 @@
 @url = "http://39.106.169.248:8080"
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTUyNTUzMjQsImlkIjoxLCJuYmYiOjE1OTUyNTUzMjQsInVzZXJuYW1lIjoieHl4MTA3In0.4U2xI-2oa93Vox07lE20lz13sQJJbJgpJ08LIt8p3lw
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTU5MDA0NjksImlkIjoxLCJuYmYiOjE1OTU5MDA0NjksInVzZXJuYW1lIjoieHl4MTA3In0.P6u0Ey9NGt3QEmhhGiwW9XiREy4S_skhEHJTvtiFKZ4
 Authorization: yxy {{token}}
 Content-Type: application/json
 
@@ -66,13 +66,14 @@ Authorization: yxy {{token}}
 }
 
 ###
-POST http://127.0.0.1:8080/article
+POST http://139.129.97.214:8080/article
 Content-Type: application/json
 Authorization: yxy {{token}}
 
 {
     "title": "1",
-    "content": "1"
+    "content": "1",
+    "tag": "1"
 }
 
 ###

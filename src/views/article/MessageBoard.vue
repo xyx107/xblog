@@ -6,7 +6,7 @@
         <section id="classifyTotal">
           想说点哈就说点哈~
         </section>
-         <section id="listByTime">
+         <section id="list">
              <p>已有 3 条评论</p>
           <ul>
             <li>bbsec3: 2019-08-09 01:11 回复</li>
@@ -50,11 +50,14 @@ export default {
   /* align-items: center; */
   margin: 0 ;
 }
-#listByTime ul{
+h1{
+  color: #333;
+}
+#list ul{
   padding-left: 0;
   list-style: none;
 }
-#listByTime ul li{
+#list ul li{
     border-bottom: 1px solid #d8dadc;
     margin-top: 10px;
 }

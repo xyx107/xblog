@@ -36,7 +36,7 @@
                 <el-button class="subbtn" type="primary" @click="login()" >登录</el-button>
               </el-col>
               <el-col :span="12" >
-                <router-link to="/forgetpw">
+                <router-link to="">
                   <el-link class="linkbtn" type="primary">忘记密码</el-link>
                 </router-link>
               </el-col>

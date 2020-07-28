@@ -2,7 +2,7 @@
   <div>
     <header id="header">
       <h1 id="user">Archerx's Blog</h1>
-      <p class="description" v-cloak>{{msg}}</p>
+      <p class="description">我于今早重生，来时心怀暖阳。</p>
       <nav id="navbar">
         <article>
           <ul class="list" :router="true">
@@ -14,7 +14,7 @@
           </ul>
         </article>
         <div class="icon">
-          <a href="https://github.com/xuchaoa"><img src="https://blog.ixuchao.cn/usr/themes/Plain-master/images/github.png" alt="github图标"></a>
+          <a href="https://github.com/xyx107"><img src="../../assets/imgs/github.png" alt="github图标"></a>
         </div>
       </nav>
     </header>
@@ -29,7 +29,7 @@ export default {
   components: {},
   data() {
     return {
-      msg: '我于今早重生，来时心怀暖阳。'
+      msg: ''
     }
   }
 }
@@ -40,12 +40,6 @@ export default {
   margin: 45px 0 20px;
   border-bottom: 1px solid #d8dadc;
 }
-/* a{
-  color: #000;
-}
-a:visited{
-  text-decoration: none;
-} */
 .description{
   margin: 5px;
   color: #666;
@@ -76,6 +70,15 @@ section{
 li{
   display: inline-block;
   list-style: none;
+}
+a{
+  color: #333;
+}
+a:visited{
+  color: #333;
+}
+a:hover{
+  text-decoration: underline;
 }
 </style>
 

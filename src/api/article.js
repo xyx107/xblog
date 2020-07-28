@@ -32,19 +32,19 @@ export function Editblog(id,data) {
 }
 
 // 删除
-export function Deleteblog(delarr) {
+export function Deleteblog(data) {
     return service.request({
         method: "delete",
-        url: `/article/${delarr}`
+        url: `/article/${data}`
 })
 }
 
 // 批量删除
-export function Deleteblogs(data) {
+export function Deleteblogs(arrdata) {
     return service.request({
         method: "delete",
         url: '/article',
-        data
+        arrdata
 })
 }
 // 点赞

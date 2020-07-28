@@ -5,15 +5,10 @@ import { getToken, removeToken, removeUserName } from "@/utils/user";
 Vue.use(Router);
 
 import Login from "@/views/login/Login";
-import Forgetpw from "@/views/login/Forgetpw";
 import Register from "@/views/login/Register";
 
 import MdEdit from "../views/layout/EditBlog";
 // import AddBlog from '../views/layout/AddBlog'
-
-import "@/views/layout/index";
-// import ShowBlogs from '../views/article/ShowBlogs'
-import SingleBlog from "../views/article/SingleBlog";
 
 const router = new Router({
   mode: "history",
@@ -32,10 +27,10 @@ const router = new Router({
       name: "register",
       component: Register
     },
-    {
-      path: "/forgetpw",
-      component: Forgetpw
-    },
+    // {
+    //   path: "/forgetpw",
+    //   component: Forgetpw
+    // },
     {
       path: "/article",
       name: "article",
@@ -50,7 +45,7 @@ const router = new Router({
     },
     {
       path: "/article/:id",
-      component: SingleBlog
+      component: () => import('@/views/article/SingleBlog')
     },
     {
       path: "/addblog",
@@ -67,7 +62,6 @@ const router = new Router({
       name: "admin",
       component: () => import("@/views/layout/components/SideBar"),
       children: [
-        { path: "/main", name: "main", component: () => import('@/views/layout/components/Main')},
         { path: "/user", name: "user", component: () => import('@/views/layout/User')},
         { path: "/comment", name: "comment", component: () => import('@/views/layout/Comment')},
         { path: "/category", name: "category", component: () => import('@/views/layout/Category')},
@@ -78,7 +72,7 @@ const router = new Router({
   ]
 });
 
-const whiteRouter = ["/login", "/register", "/forgetpw", "/article"]; //路由白名单
+const whiteRouter = ["/login", "/register", "/article"]; //路由白名单
 
 router.beforeEach((to, from, next) => {
   if(getToken()) {

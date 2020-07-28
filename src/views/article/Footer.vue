@@ -1,7 +1,7 @@
 <template>
   <div >
       <footer id="footer">
-      <p>(●'◡'●) 被续 920 天 14 小时 31 分 46 秒</p>
+      <p>(●'◡'●) 被续 920 天 14 小时 31 分 </p>
       <p>Royal Never GIve Up：纵使疾风起，皇族不言弃</p>
       <p>鲁ICP备18007171号</p>
     </footer>
@@ -28,7 +28,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
   font-family: 'zashu';
 }
 #footer p{

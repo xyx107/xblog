@@ -1,11 +1,11 @@
 <template>
   <div id="singleblog" v-cloak>
     <header>
-      <h3>Archex's Blog /</h3>
+      <h3>Archex's Blog/ </h3>
       <div class="title">
         <h1>{{blog.title}}</h1>
         <div class="icon">
-          <a href="https://github.com/xuchaoa"><img src="https://blog.ixuchao.cn/usr/themes/Plain-master/images/github.png" alt="github图标"></a>
+          <a href="https://github.com/xyx107"><img src="../../assets/imgs/github.png" alt="github图标"></a>
         </div>
       </div>
     </header>
@@ -13,8 +13,8 @@
       <li>{{tag}}</li>
     </ul> -->
     <ul>
-      <li>发布时间 {{blog.createAt}}</li>
-      <li>访问量 {{blog.rearNum}}</li>
+      <li>发布时间 {{blog.updateAt}}</li>
+      <li>访问量 10 {{blog.rearNum}}</li>
       <li  @click="zan()"><i class="iconfont icon-love"></i>点赞{{blog.zanNum}}</li>
       <!-- <li>评论数{{blog.comments}}</li> -->
     </ul>
@@ -69,8 +69,8 @@
 <script>
 import { Singleblog } from '@/api/article.js'
 import { SubmitComment } from '@/api/comment.js'
-import { getAliOSSCreds } from '@/api/oss.js'
-import OSS from 'ali-oss'
+// import { getAliOSSCreds } from '@/api/oss.js'
+// import OSS from 'ali-oss'
 export default {
   name: 'SingleBlog',
   components: {},
@@ -105,7 +105,6 @@ export default {
         if (valid){
           SubmitComment(this.comments)
           .then( () => {
-            console.log(1111)
           }).catch(error => {
             // console.log(error)
           });  
@@ -160,9 +159,8 @@ export default {
   created() {
     Singleblog(this.id).then( data => {
           this.blog = data.data;
-          console.log(this.blog)
           let timeRegex = /(.*)T(.{8})/;
-      this.blog.createAt = this.blog.createAt.slice(0,19).split('-').join('/').replace(timeRegex,"$2 $1")
+      this.blog.updateAt = this.blog.updateAt.slice(0,19).split('-').join('/').replace(timeRegex,"$2 $1")
       })
   },
   // beforeRouteEnter (to, from, next){
@@ -176,7 +174,7 @@ export default {
 
 <style lang="scss" scoped>
 #singleblog{
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -187,7 +185,6 @@ header{
   margin-top: 40px ;
   h1{
     font-family: 'zashu';
-    color: #666;
   }
   h3{
     margin: 5px 0;

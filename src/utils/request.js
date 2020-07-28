@@ -1,11 +1,13 @@
-import axios from "axios";
+// import axios from "axios";
 import { Message } from "element-ui";
 import store from "@/store";
 import { getToken } from "@/utils/user";
 
 const service = axios.create({
   // baseURL: process.env.VUE_APP_API_URL || '/index',
-  baseURL: "http://127.0.0.1:8080",
+  // baseURL: "http://127.0.0.1:8080",
+  baseURL: "http://139.129.97.214:8080",
+
   timeout: 15000
 });
 axios.defaults.headers.post["Content-type"] = "application/json";
@@ -17,7 +19,7 @@ service.interceptors.request.use(
       config.headers.Authorization = `yxy ${getToken()}`
       // config.headers["Authorization"] = "yxy"+" eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTQ4NzA4NzEsImlkIjoyLCJuYmYiOjE1OTQ4NzA4NzEsInVzZXJuYW1lIjoiYXJjaGVyeCJ9.daIrS2tlQSa1DGfMd8Qm61G89KvtFJ4ABRh2TTK1CVw";
     }
-    console.log(config);
+    // console.log(config);
     return config;
   },
   error => {
@@ -29,7 +31,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     const data = response.data;
-    console.log(data);
+    // console.log(data);
     if (data.code !== 0) {
       Message.error(data.message);
       return Promise.reject(data);

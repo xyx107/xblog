@@ -1,6 +1,5 @@
 <template>
   <div id="blogFile">
-      <!-- <blog-header/> -->
         <h1>归档</h1>
         <section id="classifyTotal">
           <ul>
@@ -18,7 +17,6 @@
             <li>2020-02-19:关于跨域问题</li>
           </ul>
         </section>
-      <!-- <blog-footer/> -->
   </div>
 </template>
 
@@ -35,13 +33,17 @@ export default {
 </script>
 
 <style scoped>
+h1{
+  color: #333;
+}
 #blogFile{
   width: 100%;
+  height: 400px;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   margin: 0 ;
-  padding: 20px
+  padding: 0;
 }
 #classifyTotal ul,#listByTime ul{
   display: flex;
@@ -54,6 +56,6 @@ li{
   padding-left: 20px; 
 }
 #listByTime ul{
-  padding-left: 0;
+  padding-left: 20px;
 }
 </style>

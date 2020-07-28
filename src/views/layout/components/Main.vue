@@ -1,8 +1,8 @@
 <template>
-  <div id="main" v-if="this.$route.path == '/main' || this.$route.path == '/admin'">
+  <div id="main" >
     <template>
       <!-- Scroll down to see the bottom-right button. -->
-      <el-backtop target=".main">
+      <el-backtop target="#main">
         <div style="{ height: 100%; width: 100%; text-align: center; }">
           <img src="https://blog.ixuchao.cn/usr/themes/Plain-master/images/commentsbg.gif" alt="" />
         </div>
@@ -49,29 +49,6 @@
         </div>
       </div>
     </section>
-      <!-- <p>{{gettime}}</p> -->
-      
-      <!--    <div class="left">
-     <div v-for="it in its1" :key="it.id">
-        <el-tooltip class="item"  effect="light" placement="bottom-start">
-            <div slot="content">名称：{{it.name}}<br/>个数：{{it.num}}</div>
-            <div class="name" @click="go"> {{ it.name.substring(0,4)+'...' }}</div>
-        </el-tooltip>
-        <div class="num">{{ it.num }}</div>
-    </div>
-      </div>-->
-
-      <!-- <div class="right">
-    <div v-for="it in its2" :key="it.id">
-        <el-tooltip class="item"  effect="light" placement="bottom-start">
-            <div slot="content">名称：{{it.name}}<br/>个数：{{it.num}}</div>
-            <div class="name" @click="go"> {{ it.name.substring(0,4)+'...' }}</div>
-        </el-tooltip>
-        <div class="num">{{ it.num }}</div>
-    </div>
-      </div>-->
-    
-    
   </div>
 </template>
 
@@ -86,8 +63,7 @@ export default {
   },
   methods: {
     drawECharts() {
-      // temp 是我们的自定义样式，上面安装Echarts时有介绍
-      var myChart = this.$echarts.init(document.getElementById('myecharts'))
+      var myChart = echarts.init(document.getElementById('myecharts'))
       var option = {}
       option = {
         // 提示框（就是鼠标放上去后出现的框）
@@ -128,20 +104,8 @@ export default {
             smooth: true, //  是否平滑曲线
             areaStyle: {}
           }
-          // {
-          //     name : '坏',
-          //     data: [82, 93, 90, 93, 129, 333, 432],
-          //     type: 'line',
-          //     smooth: true,
-          //     areaStyle: {},
-          // }
         ]
       }
-      // myChart.dispatchAction({
-      //     type: 'legendSelect',
-      //     name: '坏',
-      // })
-      //  默认显示第7个数据
       myChart.dispatchAction({
         type: 'showTip',
         seriesIndex: 1,

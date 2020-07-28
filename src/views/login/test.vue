@@ -56,9 +56,9 @@
 </template>
 
 <script>
-import animate from '@/assets/css/animate.css';
+// import animate from '@/assets/css/animate.css';
 
-import messageList from '@/utils/messagelist.js';
+// import messageList from '@/utils/messagelist.js';
 
  export default {
     data(){

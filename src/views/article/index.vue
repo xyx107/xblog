@@ -32,20 +32,6 @@ export default {
   data() {
     return {
       blogs: [],
-      // blogs: [
-      //   {title: 'PYTHON ENHANCEMENT PROPOSALS'},
-      //   {title: '聊一聊多CPU，多核，多进程，多线程'},
-      //   {title: 'PYTHON 沙箱逃逸总结一下'},
-      //   {title: 'PYTHON ENHANCEMENT PROPOSALS'},
-      //   {title: '聊一聊多CPU，多核，多进程，多线程fghfghdyutyjtujutjutjvh'},
-      //   {title: 'PYTHON 沙箱逃逸总结一下'},
-      //   {title: 'PYTHON ENHANCEMENT PROPOSALS'},
-      //   {title: '聊一聊多CPU，多核，多进程，多线程'},
-      //   {title: 'PYTHON 沙箱逃逸总结一下'},
-      //   {title: 'PYTHON ENHANCEMENT PROPOSALS'},
-      //   {title: '聊一聊多CPU，多核，多进程，多线程'},
-      //   {title: 'PYTHON 沙箱逃逸总结一下'},
-      // ],
       totalCount: null,
       currentPage: null,
       page: {
@@ -116,7 +102,7 @@ li {
 }
 .title {
   margin: 3px 5px 0 10px;
-  color: #666;
+  color: #333;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;

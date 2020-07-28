@@ -41,6 +41,7 @@ body{
 
 #app{
     box-sizing: border-box;
+    
     /* filter:Alpha(opacity=80) ie; */
     background-color: rgba(255, 255, 255, 0.9); 
     content: "";

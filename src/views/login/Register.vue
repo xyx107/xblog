@@ -112,7 +112,7 @@ export default {
           })
           this.$options.methods.clearCountDown()
         }).catch(error => {
-          this.$message.error("注册失败！")
+          // this.$message.error("注册失败！")
         })
       })
     },
