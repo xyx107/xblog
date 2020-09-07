@@ -1,4 +1,4 @@
-body, #app{
+html, body, #app{
     height: 100%;
     width: 100%;
     margin: 0;
@@ -25,6 +25,7 @@ h1{
 body{
     font-family: Lucida Sans Unicode,Verdana,"Hiragino Sans GB",sans-serif;
     background: url('../imgs/bg.jpg') no-repeat;
+    position: relative;
     /* background-size: cover; */
     background-size: 100% 100%;
     background-clip: content-box;

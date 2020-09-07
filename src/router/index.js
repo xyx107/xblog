@@ -72,7 +72,7 @@ const router = new Router({
   ]
 });
 
-const whiteRouter = ["/login", "/register", "/article"]; //路由白名单
+const whiteRouter = ["/login", "/register", "/article", "/admin", "/friend"]; //路由白名单
 
 router.beforeEach((to, from, next) => {
   if(getToken()) {

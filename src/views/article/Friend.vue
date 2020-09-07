@@ -1,5 +1,6 @@
 <template>
   <div id="friend">
+  <el-scrollbar style=" height: 100%; ">
     <h1>友链</h1>
     <section id="list">
       <ul>
@@ -46,8 +47,109 @@
             诸神之眼
           </a>
         </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
+        <li>
+          <a href="https://me.csdn.net/qq_42196196">
+            <img src="https://driverxdw.github.io/images/author.jpg" alt="friend" title="friend" />
+            <i class="el-icon-d-arrow-right"></i>
+            诸神之眼
+          </a>
+        </li>
       </ul>
     </section>
+    </el-scrollbar>
   </div>
 </template>
 
@@ -317,8 +419,9 @@ h1{
 }
 #friend {
   width: 100%;
-  height: 400px;
+  height: 100%;
   display: flex;
+  position: relative;
   flex-direction: column;
   /* align-items: center; */
   margin: 0;
@@ -345,4 +448,7 @@ img[alt='friend'] {
   vertical-align: middle;
 }
 
+.el-scrollbar__wrap {
+  overflow-x: hidden;
+}
 </style>
