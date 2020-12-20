@@ -19,6 +19,11 @@ const router = new Router({
       redirect: "/article"
     },
     {
+      path: "*",
+      name: "404",
+      component: () => import("@/components/404"),
+    },
+    {
       path: "/login",
       name: "login",
       component: Login
@@ -78,20 +83,19 @@ const whiteRouter = ["/login", "/register", "/article", "/admin", "/friend"]; //
 router.beforeEach((to, from, next) => {
   if(getToken()) {
       if (to.path === '/login') {
-          removeToken()
-          removeUserName()
-          store.commit('user/SET_TOKEN', '')
-          store.commit('Suser/ET_USERNAME', '')
-          next()
+        removeToken()
+        removeUserName()
+        store.commit('user/SET_TOKEN', '')
+        store.commit('Suser/ET_USERNAME', '')
+        next()
       }else {
-          next()
+        next()
       }
   }else {
       if(whiteRouter.indexOf(to.path) !== -1) {
-          next()
+        next()
       }else {
-
-          next('/login')
+        next('/login')
       }
   }
 
