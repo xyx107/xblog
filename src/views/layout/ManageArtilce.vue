@@ -18,7 +18,7 @@
           ref="multipleTable"
           :data="blogs.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()))"
         >
-          <el-table-column type="selection" width="80" v-model="select"></el-table-column>
+          <el-table-column type="selection" width="45" v-model="select"></el-table-column>
           <el-table-column prop label="标题">
             <template slot-scope="scope">
               <el-popover trigger="hover" placement="top">
@@ -32,8 +32,8 @@
               </el-popover>
             </template>
           </el-table-column>
-          <el-table-column prop="User.username" label="作者"></el-table-column>
-          <el-table-column prop="updateAt" label="日期"></el-table-column>
+          <el-table-column prop="author" label="作者"></el-table-column>
+          <el-table-column prop="updatedAt" label="日期"></el-table-column>
           <el-table-column prop="option" width="210">
             <template slot="header" slot-scope>
               <el-input
@@ -71,28 +71,7 @@ export default {
   data() {
     return {
       // blogs: [],
-      blogs: [
-        {
-          readNum: 1,
-          comments: 2,
-          zanNum: 3,
-          id: 4,
-          createAt: 3,
-          title: 'vscode自定义vue模板'
-        },
-        {
-          readNum: 1,
-          comments: 2,
-          zanNum: 3,
-          id: 2
-        },
-        {
-          readNum: 1,
-          comments: 2,
-          zanNum: 3,
-          id: 1
-        }
-      ],
+      blogs: [],
       id: 1,
       loading: true,
       search: '',
@@ -123,7 +102,7 @@ export default {
       if (this.id > this.totalCount) {
       } else {
         Bloglist(this.id).then(data => {
-          this.blogs = this.blogs.concat(data.data.articleList)
+          this.blogs = this.blogs.concat(data.blogs)
         })
       }
     },
@@ -131,7 +110,6 @@ export default {
     handleReserve(row) {
       return row.id
     },
-
     deleteOne(index, row) {
       this.$confirm('此操作将永久删除选中文件, 是否继续?', '提示', {
         confirmButtonText: '确定',
@@ -142,13 +120,14 @@ export default {
           Deleteblog([row.id]) //后台要接受的是数组
             .then(() => {
               Bloglist(1).then(data => {
-                this.blogs = data.data.articleList
+                this.blogs = data.blogs
               })
+              this.$message({
+                type: 'success',
+                message: '删除成功!'
+              })
+            }).catch( err => {
             })
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          })
         })
         .catch(() => {
           this.$message({
@@ -176,22 +155,23 @@ export default {
       })
         .then(() => {
           //   if (rows) {
-          //   rows.forEach(row => {
-          //     this.delarr.push(row.id)
-          //     console.log(this.delarr)
-          //   })
+            rows.forEach(row => {
+              this.delarr.push(row.id)
+              console.log(this.delarr)
+            })
           // }
           const Data = {
             ids: this.delarr
           }
           Deleteblogs(Data).then(() => {
             Bloglist(1).then(data => {
-              this.blogs = data.data.articleList
+              this.blogs = data.blogs
             })
-          })
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
+            console.log(Data)
+            this.$message({
+              type: 'success',
+              message: '删除成功!'
+            })
           })
         })
         .catch(() => {
@@ -204,9 +184,9 @@ export default {
     }
   },
   mounted() {
-    ;(this.loading = false),
+    (this.loading = false),
       Bloglist(1).then(data => {
-        this.blogs = data.data.articleList
+        this.blogs = data.blogs
         this.totalCount = data.data.totalCount
       })
   }
@@ -225,19 +205,19 @@ main {
   padding: 20px;
   margin-bottom: 30px;
 } */
-#addbtn {
-  display: flex;
-  background-color: #eee;
-}
-.addbtn {
-  margin: 30px 10px;
-  height: 30px;
-  text-align: center;
-}
+// #addbtn {
+//   display: flex;
+//   background-color: #eee;
+// }
+// .addbtn {
+//   margin: 30px 10px;
+//   height: 30px;
+//   text-align: center;
+// }
 .option {
   width: 150px;
 }
 #delbtn {
-  margin-top: 15px;
+  margin-top: 100px;
 }
 </style>

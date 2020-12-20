@@ -12,6 +12,7 @@ import MdEdit from "../views/layout/EditBlog";
 
 const router = new Router({
   mode: "history",
+  // base: '/xblog/',
   routes: [
     {
       path: "/",

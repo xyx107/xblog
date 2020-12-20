@@ -41,23 +41,43 @@ export default {
     };
   },
   methods: {
+    // handleCurrentChange(val) {
+    //   this.blogs = []
+    //   this.page.pageNumber = val
+    //   Bloglist(val).then(data => {
+    //     this.blogs = data.data.articleList;
+    //     this.totalCount =  data.data.totalCount;
+    //   });
+    // },
     handleCurrentChange(val) {
-     this.blogs = []
-     this.page.pageNumber = val
-     Bloglist(val).then(data => {
-      this.blogs = data.data.articleList;
-      this.totalCount =  data.data.totalCount;
-    });
+      this.blogs = []
+      this.page.pageNumber = val
+      Bloglist(val).then(data => {
+        this.blogs = data.blogs;
+        this.totalCount =2 ;
+      });
     },
     handleSizeChange(val) {
       this.page.pageSize = val
     }
   },
-  beforeCreate() {
-    Bloglist(1).then(data => {
-      this.blogs = data.data.articleList;
-      this.totalCount =  data.data.totalCount;
-    });
+  beforeMount() {
+    const data = {
+      page: 1
+    }
+    // Bloglist(data).then(data => {
+    //   this.blogs = data.data.articleList;
+    //   this.totalCount =  data.data.totalCount;
+    //   console.log(111)
+    // }).catch((err) => {
+    //   console.log(err)
+    // })
+    Bloglist(data).then(data => {
+      this.blogs = data.blogs;
+      this.totalCount =  2;
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 };
 </script>
@@ -87,7 +107,7 @@ li {
 }
 #list{
   display: block;
-  height: 450px;
+  height: 50%;
 }
 #show-blogs {
   width: 720px;
@@ -99,11 +119,12 @@ li {
 }
 #single-blog {
   width: 60%;
+  
 }
 .title {
   margin: 3px 5px 0 10px;
   color: #333;
-  width: 100%;
+  width: 80%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -11,6 +11,9 @@ import './assets/css/global.css'
 import './assets/iconfont/iconfont.css'
 import "@/utils/component.js"
 
+import 'vue-social-share/dist/client.css';
+import Share from 'vue-social-share'
+
 // import VueShowdown from 'vue-showdown'
 // import Simplemde from 'simplemde'
 // Vue.use(Simplemde)
@@ -22,7 +25,7 @@ import "@/utils/component.js"
 // Vue.prototype.$http = axios
 Vue.config.productionTip = false
 Vue.use(ElementUI)
-
+Vue.use(Share)
 // Vue.prototype.HOST = '/api'
 // axios.defaults.baseURL = '/api',配置请求的根路径
 // axios.defaults.withCredentials = true

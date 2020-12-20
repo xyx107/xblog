@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-container>
+    <el-container class="container">
       <el-scrollbar style=" height: 100%; ">
         <el-aside width="201px" style="height: 100%">
           <el-menu class="el-menu-vertical-demo" :collapse="isCollapse" active-text-color="#ffd04b">
@@ -107,7 +107,7 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
 }
@@ -142,7 +142,7 @@ a:visited {
 .el-breadcrumb {
   line-height: 60px;
 }
-.el-scrollbar__wrap {
+.container >>> .el-scrollbar__wrap {
   overflow-x: hidden;
 }
 </style>

@@ -66,9 +66,9 @@ export default {
             marginTop: "0",
           },
       loginForm:{
-        username: 'xyx107',
-        password: 'aaaaaaa',
-        code: ''
+        username: 'xingyu',
+        password: '123456',
+        // code: ''
       },
       logRules:{
         username: [
@@ -76,7 +76,7 @@ export default {
         ],
         password:[
           {required: true, message: "请输入密码", trigger: "blur" },
-          { min: 7, message: '长度大于7个字符', trigger: 'blur' }
+          { min: 5, message: '长度大于5个字符', trigger: 'blur' }
         ]
       }
     }
