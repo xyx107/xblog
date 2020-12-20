@@ -39,6 +39,7 @@
 <script>
 import MarkdownEditor from '../../views/layout/Edit'
 import { Addblog, Deleteblog, Editblog, Singleblog } from '../../api/article'
+import { Collapse } from 'element-ui'
 
 export default {
   components: { MarkdownEditor },
@@ -88,7 +89,8 @@ export default {
     getArticle() {
         const bid = this.$route.params.id
         Singleblog(bid).then(res => {
-            this.blog = res.data
+          console.log(res)
+            this.blog = res.data[0]
         })
     }
   },

@@ -21,7 +21,7 @@ export function Register(data) {
 export function GetCode(data) {
     return service.request({
         method: "post",
-        url: '/code',
+        url: '/getCode',
         data
     })
 }

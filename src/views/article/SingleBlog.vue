@@ -6,6 +6,15 @@
         <h1>{{blog.title}}</h1>
         <div class="icon">
           <a href="https://github.com/xyx107"><img src="../../assets/imgs/github.png" alt="github图标"></a>
+          
+          <el-popover
+            placement="bottom"
+            width="150"
+            trigger="click"
+            >
+            <share :config="config"></share>
+            <el-button slot="reference"  icon="el-icon-share" circle @click="showShareBtn=true"></el-button>
+          </el-popover>
         </div>
       </div>
     </header>
@@ -13,35 +22,38 @@
       <li>{{tag}}</li>
     </ul> -->
     <ul>
-      <li>发布时间 {{blog.updateAt}}</li>
-      <li>访问量 10 {{blog.rearNum}}</li>
+      <li>发布时间 {{blog.createdAt}}</li>
+      <li>访问量 {{blog.readNum}}</li>
       <li  @click="zan()"><i class="iconfont icon-love"></i>点赞{{blog.zanNum}}</li>
       <!-- <li>评论数{{blog.comments}}</li> -->
     </ul>
-    <section id="content" >
-      <el-scrollbar style=" height: 100%; ">
-        <div v-html="blog.content"></div>
-        <!-- <div v-html="blog.content"> {{blog.content}}</div> -->
-      </el-scrollbar>
-    </section>
-    <section>
-        <el-form id="messageForm" :model="comments" ref="messageFormRef" :rules="messageRules">
-          <el-form-item>
-            <el-input placeholder="恁叫哈~" v-model="comments.name"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-input placeholder="恁邮箱是哈~" v-model="comments.email"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-input placeholder="恁想说哈~" v-model="comments.content"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <img src="https://blog.ixuchao.cn/usr/themes/Plain-master/images/commentsbg.gif" alt="blackcat">
-            <el-radio v-model="notrobot">俺不是机器银</el-radio>
-            <el-button type="primary" @click="consol">发表评论</el-button>
-          </el-form-item>
-        </el-form>
-    </section>
+    <div id="body">
+      <section class="content" >
+        <el-scrollbar style=" height: 100%; ">
+          <div v-html="blog.content"></div>
+          <!-- <div v-html="blog.content"> {{blog.content}}</div> -->
+        </el-scrollbar>
+      </section>
+      <section class="comments">
+          <el-form id="messageForm" :model="comments" ref="messageFormRef" :rules="messageRules">
+            <el-form-item>
+              <el-input placeholder="恁叫哈~" v-model="comments.name"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-input placeholder="恁邮箱是哈~" v-model="comments.email"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-input placeholder="恁想说哈~" v-model="comments.content"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <img src="https://blog.ixuchao.cn/usr/themes/Plain-master/images/commentsbg.gif" alt="blackcat">
+              <el-radio v-model="notrobot">俺不是机器银</el-radio>
+              <el-button type="primary" @click="consol">发表评论</el-button>
+            </el-form-item>
+          </el-form>
+      </section>
+    </div>
+    
     <!-- <section id="comment">
     <el-button type="primary" @click="dialogFormVisible = true">我也要发表评论</el-button>
       <el-dialog title="发表评论" :visible.sync="dialogFormVisible">
@@ -89,12 +101,25 @@ export default {
           name: '',
           content: '',
         },
+        config: {},
         messageRules: {
           username: [
             {required: true, message: "请输入用户名", trigger: "blur"}
           ],
-        }
+        },
+        showShareBtn: false
     }
+  },
+  created() {
+    Singleblog(this.id).then( data => {
+          this.blog = data.data[0];
+          console.log('a', data )
+          let timeRegex = /(.*)T(.{8})/;
+          this.blog.createdAt = this.blog.createdAt.slice(0,19).split('-').join('/').replace(timeRegex,"$2 $1")
+          this.blog.updatedAt = this.blog.updatedAt.slice(0,19).split('-').join('/').replace(timeRegex,"$2 $1")
+      }).catch((err)=> {
+        
+      })
   },
   methods: {
     zan(){
@@ -113,6 +138,13 @@ export default {
         }
       })
     },
+    handleClose(done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+      }
     // submitComment() {
     //   const comment =  {
     //     // name: this.comment.name,
@@ -155,14 +187,7 @@ export default {
     //       console.log(err)
     //     })
     //   }
-  },
-  created() {
-    Singleblog(this.id).then( data => {
-          this.blog = data.data;
-          let timeRegex = /(.*)T(.{8})/;
-      this.blog.updateAt = this.blog.updateAt.slice(0,19).split('-').join('/').replace(timeRegex,"$2 $1")
-      })
-  },
+  }
   // beforeRouteEnter (to, from, next){
   //   next();
   // },
@@ -219,13 +244,26 @@ ul{
     font-size: 12px;
   }
 }
-#content{
-  border: 2px solid #eee;
-  height: 400px;
+#body{
+  display: flex;
+  flex-direction: row;
+  .content{
+    width: 60%;
+    margin-left: 3%;
+    border: 2px solid #eee;
+    background-color: #fff;
+    height: 400px;
+  }
+  .comments{
+    margin-left: 5%;
+    width: 30%;
+  }
 }
-.el-scrollbar__wrap{ 
+
+.content /deep/ .el-scrollbar__wrap{ 
   overflow-x: hidden;
 }
+
 #messageForm{
   margin-top: 20px;
   display: flex;

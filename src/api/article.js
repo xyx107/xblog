@@ -3,9 +3,10 @@ import service from '@/utils/request'
 // 列表
 export function Bloglist(data) {
     return service.request({
-        method: "get",
-        url: `/article?page=${data}`,
-})
+        method: "post",
+        url: '/article/list',
+        data
+    })
 }
 // 文章详情
 export function Singleblog(id) {
@@ -55,8 +56,6 @@ export function Dianzan(data) {
         data
 })
 }
-
-
 
 // 搜索
 export function Search(data) {

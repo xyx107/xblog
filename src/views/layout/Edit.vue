@@ -79,12 +79,12 @@ export default {
 <style lang="scss" scoped>
 //css    根据自己的需求覆盖原样式
 .simplemde-container>>>.CodeMirror {
-  min-height: 150px;
+  min-height: 350px;
   line-height: 20px;
 }
 .simplemde-container>>>.CodeMirror-scroll {
-  min-height: 150px;
-  max-height:200px;
+  min-height: 350px;
+  max-height: 20px;
 }
 .simplemde-container>>>.CodeMirror-code {
   padding-bottom: 40px;

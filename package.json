@@ -16,7 +16,9 @@
     "echarts": "^4.7.0",
     "element-ui": "^2.13.2",
     "font-awesome": "^4.7.0",
+    "formidable": "^1.2.2",
     "normalize-wheel": "^1.0.1",
+    "qiniu": "^7.3.2",
     "resize-observer-polyfill": "^1.5.1",
     "sass": "^1.26.2",
     "sass-loader": "^7.3.1",
@@ -24,8 +26,10 @@
     "simplemde": "^1.11.2",
     "vue": "^2.5.2",
     "vue-router": "^3.1.5",
+    "vue-social-share": "^0.0.3",
     "vue-style-loader": "^3.1.2",
-    "vuex": "^3.1.2"
+    "vuex": "^3.1.2",
+    "watermark-dom": "^2.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

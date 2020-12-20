@@ -72,9 +72,9 @@ export default {
             marginTop: "0",
           },
       registerForm: {
-        username: "xyx107",
-        email: "1297184665@qq.com",
-        password: "aaaaaaa",
+        username: "xingyu",
+        email: "xyx107@outlook.com",
+        password: "123456",
         code: ''
       },
       timer: null,
