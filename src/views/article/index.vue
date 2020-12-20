@@ -92,8 +92,11 @@ ol{
   margin: 0;
 }
 h3{
-  font-family: 'zashu';
-  padding: 10px 0;
+  // font-family: 'ziti';
+  font-size: 18px;
+  // font-weight: 700;
+  color: #333;
+  padding: 5px 0;
 }
 a:hover{
   text-decoration: underline;

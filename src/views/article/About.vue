@@ -5,7 +5,6 @@
         <p>很多技术，明天就会过时，如果你掌握的是学习方法，那你还有下一个机会，如果你掌握的仅仅是这个技术本身，你就没有机会了。</p>
         <p>学不动了>~< </p>
         <p>不我还能学>~< </p>    
-        
       </section>
   </div>
 </template>
@@ -39,6 +38,6 @@ h1{
 #classifyTotal{
     display: flex;
     flex-direction: column;
-    height: 450px;
+    height: 300px;
 }
 </style>

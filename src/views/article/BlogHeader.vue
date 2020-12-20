@@ -49,7 +49,7 @@ export default {
 }
 #user{
   margin: 0;
-  font-family: 'zashu';
+  font-family: 'ziti';
 }
 #navbar{
   display: flex;

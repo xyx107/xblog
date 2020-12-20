@@ -17,10 +17,10 @@ h1{
     font-family: 'ziti' ;
     src: url('../有字库龙藏体.ttf'); 
 } 
-@font-face { 
+/* @font-face { 
     font-family: 'zashu' ;
     src: url('../851手写杂书体.ttf'); 
-}
+} */
 
 body{
     font-family: Lucida Sans Unicode,Verdana,"Hiragino Sans GB",sans-serif;
