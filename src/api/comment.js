@@ -3,7 +3,7 @@ import service from '@/utils/request'
 export function SubmitComment(data) {
   return service.request({
         method: "post",
-        url: '/comment',
+        url: '/api/comment',
         data
 })
 }
@@ -12,6 +12,6 @@ export function SubmitComment(data) {
 export function DeleteComment(id) {
   return service.request({
     method: "delete",
-    url: `/comment/${id}`,
+    url: `/api/comment/${id}`,
   })
 }

@@ -19,11 +19,6 @@ const router = new Router({
       redirect: "/article"
     },
     {
-      path: "*",
-      name: "404",
-      component: () => import("@/components/404"),
-    },
-    {
       path: "/login",
       name: "login",
       component: Login
@@ -74,7 +69,12 @@ const router = new Router({
         { path: "/manageartilce",  name: "manageartilce", component: () => import('@/views/layout/ManageArtilce')},
         
       ]
-    }
+    },
+    {
+      path: "*",
+      name: "404",
+      component: () => import("@/components/404"),
+    },
   ]
 });
 

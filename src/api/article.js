@@ -4,7 +4,7 @@ import service from '@/utils/request'
 export function Bloglist(data) {
     return service.request({
         method: "post",
-        url: '/article/list',
+        url: '/api/article/list',
         data
     })
 }
@@ -12,14 +12,14 @@ export function Bloglist(data) {
 export function Singleblog(id) {
     return service.request({
         method: "get",
-        url: `/article/${id}`
+        url: `/api/article/${id}`
 })
 }
 // 新增
 export function Addblog(data) {
    return service.request({
         method: "post",
-        url: '/article',
+        url: '/api/article',
         data
 })
 }
@@ -27,7 +27,7 @@ export function Addblog(data) {
 export function Editblog(id,data) {
     return service.request({
         method: "put",
-        url: `/article/${id}`,
+        url: `/api/article/${id}`,
         data
 })
 }
@@ -36,7 +36,7 @@ export function Editblog(id,data) {
 export function Deleteblog(data) {
     return service.request({
         method: "delete",
-        url: `/article/${data}`
+        url: `/api/article/${data}`
 })
 }
 
@@ -44,7 +44,7 @@ export function Deleteblog(data) {
 export function Deleteblogs(arrdata) {
     return service.request({
         method: "delete",
-        url: '/article',
+        url: '/api/article',
         arrdata
 })
 }
@@ -52,7 +52,7 @@ export function Deleteblogs(arrdata) {
 export function Dianzan(data) {
     return service.request({
         method: "get",
-        url: '/article/{id}/zan',
+        url: '/api/article/{id}/zan',
         data
 })
 }
@@ -61,7 +61,7 @@ export function Dianzan(data) {
 export function Search(data) {
     return service.request({
         method: "post",
-        url: '/login',
+        url: '/api/search',
         data
 })
 }

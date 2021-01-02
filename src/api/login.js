@@ -3,7 +3,7 @@ import service from '@/utils/request'
 export function Login(data) {
   return service.request({
         method: "post",
-        url: '/login',
+        url: '/api/login',
         data
 })
 }
@@ -12,7 +12,7 @@ export function Login(data) {
 export function Register(data) {
     return service.request({
         method: "post",
-        url: '/register',
+        url: '/api/register',
         data
     })
 }
@@ -21,14 +21,14 @@ export function Register(data) {
 export function GetCode(data) {
     return service.request({
         method: "post",
-        url: '/getCode',
+        url: '/api/getCode',
         data
     })
 }
 // 获取用户名
 // service.request({
 //     method: 'post',
-//     url: '/user/12345',
+//     url: '/api/user/12345',
 //     data: {
 //         firstName: 'Adf',
 //         lastName: 'Sfdv'
