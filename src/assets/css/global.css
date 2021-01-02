@@ -51,3 +51,49 @@ body{
     /* filter: blur(1px);  */               
 }
 
+ 
+@media screen and (max-width: 1260px) {
+    .div {
+        /**适应1280x800的屏幕,除去浏览器滚动条宽度20px*/
+    }
+}
+@media screen and (min-width: 1261px) and  (max-width: 1346px) {
+    .div {
+        /**适应1366x768的屏幕,除去浏览器滚动条宽度20px*/
+    }
+}
+@media screen and (min-width: 1347px) and  (max-width: 1420px) {
+    .div {
+        /**适应1440x900的屏幕,除去浏览器滚动条宽度20px*/
+    }
+}
+@media screen and (min-width: 1421px) and  (max-width: 1900px) {
+    .div {
+        /**适应1920x1080的屏幕,除去浏览器滚动条宽度20px*/
+    }
+}
+@media screen and (min-width: 1901px) {
+    .div {
+        /**适应宽度超过1920的屏幕,除去浏览器滚动条宽度20px*/
+    }
+}
+@media screen and (max-height: 668px) {
+    .div {
+        /**适应1366x768的屏幕,除去浏览器菜单栏、标签栏、状态栏以及系统任务栏高度100px*/
+    }
+}
+@media screen and (min-height: 669px) and  (max-height: 800px) {
+    .div {
+        /**适应1440x900的屏幕,除去浏览器菜单栏、标签栏、状态栏以及系统任务栏高度100px*/
+    }
+}
+@media screen and (min-height: 801px) and  (max-height: 980px) {
+    .div {
+        /**适应1920x1080的屏幕,除去浏览器菜单栏、标签栏、状态栏以及系统任务栏高度100px*/
+    }
+}
+@media screen and (min-height: 981px) {
+    .div {
+        /**适应高度超过1080的屏幕,除去浏览器菜单栏、标签栏、状态栏以及系统任务栏高度100px*/
+    }
+}

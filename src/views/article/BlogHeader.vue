@@ -14,9 +14,9 @@
           </ul>
         </article>
         <div class="icon">
-          <div class="admin-btn">
+          <!-- <div class="admin-btn">
               <router-link to="/admin"><i class="el-icon-set-up" ></i></router-link>
-          </div>
+          </div> -->
           <a href="https://github.com/xyx107"><img src="../../assets/imgs/github.png" alt="github图标"></a>
         </div>
       </nav>
