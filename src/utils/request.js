@@ -4,9 +4,9 @@ import store from "@/store";
 import { getToken } from "@/utils/user";
 
 const service = axios.create({
-  // baseURL: process.env.VUE_APP_API_URL || '/',
+  baseURL: process.env.NODE_ENV==='production' ? process.env.BASE_API : "/",
 
-  baseURL: "http://localhost:3000" || '/',
+  // baseURL: "http://localhost:3000",
   timeout: 15000
 });
 axios.defaults.headers.post["Content-type"] = "application/json";
@@ -31,6 +31,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     const data = response.data;
+    console.log(process.env.NODE_ENV)
     // console.log(data);
     if (data.code !== 0) {
       // Message.error(data.message);
