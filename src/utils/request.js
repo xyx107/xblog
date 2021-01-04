@@ -4,7 +4,7 @@ import store from "@/store";
 import { getToken } from "@/utils/user";
 
 const service = axios.create({
-  baseURL: process.env.NODE_ENV==='production' ? process.env.BASE_API : "/",
+  baseURL: process.env.NODE_ENV==='production' ? process.env.BASE_API : "http://localhost:3000",
 
   // baseURL: "http://localhost:3000",
   timeout: 15000
@@ -16,7 +16,7 @@ service.interceptors.request.use(
   config => {
     if (store.state.user.token) {
       // config.headers.Authorization = `yxy ${getToken()}`
-      config.headers.Authorization = '$2b$04$6XBd5vAVhRJg29H9OjNjZekKv33oBLpjZDE45rlAHo9tu/ZAXEh2m'
+      // config.headers.Authorization = '$2b$04$6XBd5vAVhRJg29H9OjNjZekKv33oBLpjZDE45rlAHo9tu/ZAXEh2m'
       // config.headers["Authorization"] = "yxy"+" eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTQ4NzA4NzEsImlkIjoyLCJuYmYiOjE1OTQ4NzA4NzEsInVzZXJuYW1lIjoiYXJjaGVyeCJ9.daIrS2tlQSa1DGfMd8Qm61G89KvtFJ4ABRh2TTK1CVw";
     }
     // console.log(config);
