@@ -3,7 +3,7 @@
       <footer id="footer">
       <p>(●'◡'●) 被续 920 天 14 小时 31 分 </p>
       <p>Royal Never GIve Up：纵使疾风起，皇族不言弃</p>
-      <p><a href="https://beian.miit.gov.cn">鲁ICP备18007171号</a> </p>
+      <p><a href="https://beian.miit.gov.cn">鲁ICP备2021005234号</a> </p>
     </footer>
   </div>
 </template>
